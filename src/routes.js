@@ -1,6 +1,6 @@
 import VueRouter from 'vue-router';
 
-import Home from './components/home';
+import SiteCenter from './components/site-center';
 import Signin from './components/signin';
 import Signup from './components/signup';
 import Shop from './components/shop';
@@ -9,8 +9,8 @@ import Admin from './components/admin/admin';
 
 const routes = [{
   path     : '/',
-  name     : 'home',
-  component: Home
+  name     : 'site-center',
+  component: SiteCenter
 }, {
   path     : '/signin',
   name     : 'signin',
