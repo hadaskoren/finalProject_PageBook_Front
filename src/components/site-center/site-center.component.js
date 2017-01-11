@@ -1,3 +1,6 @@
+import mainNav from '../main-nav';
+import editor from '../editor';
+import compList from '../comp-list';
 
 export default  {
   data: () => {
@@ -8,5 +11,8 @@ export default  {
   methods : {
   },
   components: {
+    mainNav,
+    editor,
+    compList
   }
 }
