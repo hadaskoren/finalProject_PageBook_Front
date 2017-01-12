@@ -1,7 +1,9 @@
 <div>
   <section class="comp-list">
        <p>LIST OF COMPONENTS</p>
-       <header-template></header-template>
+       <component :is="getComps[0].type" :propsData="getComps[0].props"></component>
+       <!--<header-template :propsData="getComps[0].props"></header-template>-->
+       <!--<header-template></header-template>-->
        <button class="small btn btn-info fa fa-plus">Add Component</button>
         <pic-text-section-template></pic-text-section-template>
         <button class="small btn btn-info fa fa-plus">Add Component</button>
