@@ -1,3 +1,5 @@
+import { mapGetters } from 'vuex'
+
 import comp from '../comp';
 import HeaderTemplate from '../template-components/header-template';
 import PicTextSectionTemplate from '../template-components/pic-text-section-template';
@@ -8,6 +10,11 @@ export default  {
   data: () => {
     return {
     }
+  },
+  computed: {
+    ...mapGetters([
+      'getComps',
+    ])
   },
   methods : {
   },
