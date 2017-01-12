@@ -1,6 +1,5 @@
 import mainNav from '../main-nav';
 import editor from '../editor';
-import compList from '../comp-list';
 
 export default  {
   data: () => {
@@ -13,6 +12,5 @@ export default  {
   components: {
     mainNav,
     editor,
-    compList
   }
 }
