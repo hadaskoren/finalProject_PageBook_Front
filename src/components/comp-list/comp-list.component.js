@@ -1,6 +1,5 @@
 import { mapGetters } from 'vuex'
 
-import comp from '../comp';
 import HeaderTemplate from '../template-components/header-template';
 import PicTextSectionTemplate from '../template-components/pic-text-section-template';
 import IconListTemplate from '../template-components/icon-list-template';
@@ -19,7 +18,7 @@ export default  {
   methods : {
   },
   components: {
-    comp,
+    // comp,
     HeaderTemplate,
     PicTextSectionTemplate,
     IconListTemplate,
