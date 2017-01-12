@@ -1,15 +1,17 @@
 <div>
   <section class="comp-list">
-       <p>LIST OF COMPONENTS</p>
-       <component :is="getComps[0].type" :propsData="getComps[0].props"></component>
-       <!--<header-template :propsData="getComps[0].props"></header-template>-->
-       <!--<header-template></header-template>-->
-       <button class="small btn btn-info fa fa-plus" @click="addComp">Add Component</button>
-        <pic-text-section-template></pic-text-section-template>
-        <button class="small btn btn-info fa fa-plus">Add Component</button>
-        <icon-list-template></icon-list-template>
-        <button class="small btn btn-info fa fa-plus">Add Component</button>
-        <pic-list-template></pic-list-template>
-        <button class="small btn btn-info fa fa-plus">Add Component</button>
-	</section>
+    <p>LIST OF COMPONENTS</p>
+    <component v-for="comp in getComps" :is="comp.type" :propsData="comp.props"></component>
+    <!--<component :is="getComps[0].type" :propsData="getComps[0].props"></component>-->
+    <button class="small btn btn-info fa fa-plus" @click="addComp">Add Component</button>
+    <!--<header-template :propsData="getComps[0].props"></header-template>-->
+    <!--<header-template></header-template>-->
+    <!--<button class="small btn btn-info fa fa-plus">Add Component</button>
+    <pic-text-section-template></pic-text-section-template>
+    <button class="small btn btn-info fa fa-plus">Add Component</button>
+    <icon-list-template></icon-list-template>
+    <button class="small btn btn-info fa fa-plus">Add Component</button>
+    <pic-list-template></pic-list-template>
+    <button class="small btn btn-info fa fa-plus">Add Component</button>-->
+  </section>
 </div>
