@@ -1,6 +1,7 @@
-import { mapGetters } from 'vuex'
+import { mapGetters,mapMutations } from 'vuex'
+import {ADD_COMP} from '../../modules/currSite/currSite.module';
 
-import comp from '../comp';
+
 import HeaderTemplate from '../template-components/header-template';
 import PicTextSectionTemplate from '../template-components/pic-text-section-template';
 import IconListTemplate from '../template-components/icon-list-template';
@@ -16,10 +17,12 @@ export default  {
       'getComps',
     ])
   },
-  methods : {
+  methods: {
+    ...mapMutations({
+      addComp: ADD_COMP
+    })
   },
   components: {
-    comp,
     HeaderTemplate,
     PicTextSectionTemplate,
     IconListTemplate,

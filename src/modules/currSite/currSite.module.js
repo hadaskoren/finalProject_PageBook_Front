@@ -1,3 +1,5 @@
+export const ADD_COMP = 'currSite/ADD_COMP';
+
 const headerTemlateCompInterface = {
     name: '',
     type: '',
@@ -37,7 +39,13 @@ const state = {
 };
 
 const mutations = {
-  
+    [ADD_COMP](state) {
+      console.log('IN MUTATION');
+      var headerTemlateCompInterface2 = (JSON.parse(JSON.stringify(headerTemlateCompInterface)));
+      console.log(headerTemlateCompInterface2);
+      state.comps.push(headerTemlateCompInterface2);
+      console.log(state.comps);
+  }
 }
 
 const actions = {};
