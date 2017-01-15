@@ -1,17 +1,21 @@
 <div>
   <section class="comp-list">
-    <p>LIST OF COMPONENTS</p>
-    <component v-for="comp in getComps" :is="comp.type" :propsData="comp.props"></component>
-    <!--<component :is="getComps[0].type" :propsData="getComps[0].props"></component>-->
-    <button class="small btn btn-info fa fa-plus" @click="addComp">Add Component</button>
-    <!--<header-template :propsData="getComps[0].props"></header-template>-->
-    <!--<header-template></header-template>-->
-    <!--<button class="small btn btn-info fa fa-plus">Add Component</button>
-    <pic-text-section-template></pic-text-section-template>
-    <button class="small btn btn-info fa fa-plus">Add Component</button>
-    <icon-list-template></icon-list-template>
-    <button class="small btn btn-info fa fa-plus">Add Component</button>
-    <pic-list-template></pic-list-template>
-    <button class="small btn btn-info fa fa-plus">Add Component</button>-->
-  </section>
+    <p>Edit Your components:</p>
+    <template v-for="(comp, compIdx) in getComps">
+      <button class="deleteComp flex small btn btn-danger" @click="addorDeleteComp('deleteComp',selectedComp,compIdx)">X</button>
+      <component :is="comp.type" :propsData="comp.props"></component>
+      <div class="actionBtns flex" >
+        
+        <button type="button" class="small btn btn-info fa fa-plus" data-toggle="modal" data-target="#exampleModal" @click="showCompBtns(compIdx)">Add Component</button>
+        <select v-if="comp.showAddCompButton === true" class="chooseComp" v-model="selectedComp.comp">
+          <option v-for="option in options" :value="option.value">
+            {{ option.text }}
+          </option>
+        </select>
+        <button v-if="comp.showAddCompButton === true" class="small btn btn-success" @click="addorDeleteComp('addComp',selectedComp,compIdx)">add</button>
+        <!--<button class="small btn btn-danger" @click="comp.showAddCompButton = false">cancel</button>-->
+      </div>
+    </template>
+<!--<comp-modal v-if="showModal === true"></comp-modal>-->
+</section>
 </div>
