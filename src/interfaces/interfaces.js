@@ -1,6 +1,5 @@
 export const Interfaces = {
     'header-template': {
-        idx: 0,
         type:'header-template',
         name: '',
         showAddCompButton: false,
@@ -16,7 +15,6 @@ export const Interfaces = {
         }
     },
     'pic-text-template': {
-        idx: 1,
         type:'pic-text-template',
         name: '',
         showAddCompButton: false,
@@ -28,7 +26,6 @@ export const Interfaces = {
         }
     },
     'icon-list-template': {
-        idx: 2,
         type:'icon-list-template',
         name: '',
         showAddCompButton: false,
@@ -41,7 +38,6 @@ export const Interfaces = {
         }
     },
     'pic-list-template': {
-        idx: 3,
         type:'pic-list-template',
         name: '',
         showAddCompButton: false,
