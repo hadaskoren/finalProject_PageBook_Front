@@ -8,7 +8,6 @@
       <div class="actionBtns flex" >
         
         <button type="button" class="small btn btn-info fa fa-plus" data-toggle="modal" data-target="#exampleModal" @click="showCompBtns(compIdx)">Add Component</button>
-        
         <select v-if="comp.showAddCompButton" class="chooseComp" v-model="selectedComp.comp">
           <option v-for="option in options" :value="option.value">
             {{ option.text }}

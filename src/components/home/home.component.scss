@@ -1,0 +1,22 @@
+.home-component {
+    text-align: center;
+    position: relative;
+    /*top: 100px;*/
+}
+
+.semi-colon {
+    font-size: 20px;
+    position: relative;
+    top: 1px;
+    color: #333;
+}
+
+.show-login-active{
+    .home-component {
+        color: red;
+    }
+}
+
+.sign-up-button {
+    font-size: 12px;
+}

@@ -1,6 +1,9 @@
+
 import Vue from 'vue';
 import {Interfaces} from '../../interfaces/interfaces';
 import * as types from '../../mutation-types/mutation-types'
+import router from '../../routes';
+
 
 const state = {
     id: '',
@@ -25,7 +28,9 @@ const mutations = {
         state.siteName = site.siteName;
         state.url = site.url;
         state.comps = site.comps;
-        //   console.log(site);
+        console.log(site);
+        router.push('/editor');
+        
     },
      [types.ADD_COMP](state, compSelectedInterface) {
         console.log('state.comps',state.comps);
@@ -40,8 +45,9 @@ const mutations = {
 }
 
 const actions = {
-    getSite(context, siteID) {
-        Vue.http.get(`http://localhost:3003/data/sites/${siteID}`)
+    getSite(context, siteId) {
+        console.log(siteId);
+        Vue.http.get(`http://localhost:3003/data/sites/${siteId}`)
             .then(res => res.json())
             .then(json => { context.commit('updateCurrSite', json) })
         // .then(res => context.dispatch('getSite', context.state.siteIDs[0]));
