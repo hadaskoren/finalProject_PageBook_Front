@@ -1,22 +1,42 @@
-
-export default  {
+export default {
   props: ['propsData'],
   data: () => {
     return {
-      // h2_text: 'Adipiscing amet consequat',
-      // p_text: 'Ante nunc accumsan et aclacus nascetur ac ante amet sapien sed.',
-      // card_1_h3_text: 'Magna feugiat lorem',
-      // card_1_p_text: 'Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet vis sed volutpat et nascetur.',
-      // card_1_img_src: 'static/pic02.jpg',
-      // card_2_h3_text: 'Magna feugiat lorem',
-      // card_2_p_text: 'Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet vis sed volutpat et nascetur.',
-      // card_2_img_src: 'static/pic03.jpg',
-      // card_3_h3_text: 'Magna feugiat lorem',
-      // card_3_p_text: 'Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet vis sed volutpat et nascetur.',
-      // card_3_img_src: 'static/pic04.jpg'
+      uploadedImg1: '',
+      uploadedImg2: '',
+      uploadedImg3: ''
+
+      // imageLink: 'propsData.card_1_img_src'
     }
   },
-  methods : {
+  methods: {
+    onFileChange(e) {
+      console.log('onfilechange');
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length)
+        return;
+      this.createImage(files[0]);
+    },
+    createImage(file) {
+      //var image = new Image();
+      var reader = new FileReader();
+
+      reader.onload = (e) => {
+        this.uploadedImg1 = e.target.result;
+        this.sendToServer(this.uploadedImg1);
+      };
+      console.log('uploadedImg1',this.uploadedImg1);
+      reader.readAsDataURL(file);
+      console.log('this.uploadedImg1',this.uploadedImg1);
+
+      
+    },
+    sendToServer(img) {
+      console.log('sendToServer');
+      this.$http.post('http://localhost:3003/upload', img)
+        .then(res => res.json())
+        .then(json => console.log(json))
+    }
   },
   components: {
   }

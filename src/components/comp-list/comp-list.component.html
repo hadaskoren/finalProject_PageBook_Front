@@ -3,6 +3,7 @@
     <p>Edit Your components:</p>
     <template v-for="(comp, compIdx) in getComps">
       <button class="deleteComp flex small btn btn-danger" @click="addorDeleteComp('deleteComp',selectedComp,compIdx)">X</button>
+      
       <component :is="comp.type" :propsData="comp.props"></component>
       <div class="actionBtns flex" >
         

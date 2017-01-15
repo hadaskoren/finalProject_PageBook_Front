@@ -1,5 +1,4 @@
 
-
 import Vue from 'vue';
 import {Interfaces} from '../../interfaces/interfaces';
 import * as types from '../../mutation-types/mutation-types'
@@ -85,7 +84,6 @@ const actions = {
         });
         context.commit(types.SHOW_COMP_ADD_BTNS, currComp);
     },
-    
 };
 
 const getters = {
