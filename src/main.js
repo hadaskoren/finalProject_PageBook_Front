@@ -14,7 +14,6 @@ const app = new Vue({
   router,
   store,
   components: {
-    // Editor
   }
 }).$mount('#app');
 
