@@ -6,6 +6,10 @@ export default  {
     }
   },
   methods : {
+    saveSite() {
+      this.$store
+        .dispatch('saveCurrSite');
+    }
   },
   components: {
     compList

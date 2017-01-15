@@ -1,4 +1,5 @@
 export const ADD_COMP = 'currSite/ADD_COMP';
+import Vue from 'vue';
 
 const headerTemlateCompInterface = {
     name: '',
@@ -68,24 +69,54 @@ const state = {
     isPublished: false,
     comps: [
         JSON.parse(JSON.stringify(headerTemlateCompInterface)),
-        JSON.parse(JSON.stringify(picTextSectionTemplateCompInterface)),
-        JSON.parse(JSON.stringify(iconListTemplateCompInterface)),
-        JSON.parse(JSON.stringify(picListTemplateCompInterface))
-        
+        // JSON.parse(JSON.stringify(picTextSectionTemplateCompInterface)),
+        // JSON.parse(JSON.stringify(iconListTemplateCompInterface)),
+        // JSON.parse(JSON.stringify(picListTemplateCompInterface))
+
     ]
 };
 
 const mutations = {
     [ADD_COMP](state) {
-      console.log('IN MUTATION');
-      var headerTemlateCompInterface2 = (JSON.parse(JSON.stringify(headerTemlateCompInterface)));
-      console.log(headerTemlateCompInterface2);
-      state.comps.push(headerTemlateCompInterface2);
-      console.log(state.comps);
-  }
+        console.log('IN MUTATION');
+        var headerTemlateCompInterface2 = (JSON.parse(JSON.stringify(headerTemlateCompInterface)));
+        console.log(headerTemlateCompInterface2);
+        state.comps.push(headerTemlateCompInterface2);
+        console.log(state.comps);
+    },
+    updateCurrSite(state, site) {
+        //   console.log(state);
+        state.id = site._id;
+        state.isPublished = site.isPublished;
+        state.siteName = site.siteName;
+        state.url = site.url;
+        state.comps = site.comps;
+        //   console.log(site);
+    }
 }
 
-const actions = {};
+const actions = {
+    getSite(context, siteID) {
+        Vue.http.get(`http://localhost:3003/data/sites/${siteID}`)
+            .then(res => res.json())
+            .then(json => { context.commit('updateCurrSite', json) })
+        // .then(res => context.dispatch('getSite', context.state.siteIDs[0]));
+    },
+    saveCurrSite(context) {
+        const siteToSave = {
+            _id: context.state.id,
+            isPublished: context.state.isPublished,
+            siteName: context.state.siteName,
+            url: context.state.url,
+            comps: context.state.comps
+        }
+
+        console.log('siteToSave', siteToSave);
+        Vue.http.put(`http://localhost:3003/data/sites/${context.state.id}`, siteToSave)
+        .then(res => res.json())
+        .then(json => console.log(json))
+    }
+};
 
 const getters = {
     getComps: (state) => { return state.comps }

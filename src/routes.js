@@ -2,6 +2,7 @@ import VueRouter from 'vue-router';
 
 import SiteCenter from './components/site-center';
 import Editor from './components/editor';
+import Login from './components/login';
 
 
 // import Signin from './components/signin';
@@ -20,6 +21,12 @@ const routes = [{
   name: 'editor',
   component: Editor
 },
+{
+  path: '/login',
+  name: 'login',
+  component: Login
+},
+
 //  {
 //   path: '/signin',
 //   name: 'signin',

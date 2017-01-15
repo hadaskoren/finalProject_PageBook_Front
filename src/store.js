@@ -1,4 +1,9 @@
 import Vuex from 'vuex';
+import VueResource from 'vue-resource';
+import VueRouter from 'vue-router';
+import router from './routes';
+
+
 import userModule from './modules/user/user.module';
 import currSiteModule from './modules/currSite/currSite.module';
 
