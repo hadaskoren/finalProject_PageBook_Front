@@ -3,16 +3,18 @@
     <p>Edit Your components:</p>
     <template v-for="(comp, compIdx) in getComps">
       <button class="deleteComp flex small btn btn-danger" @click="addorDeleteComp('deleteComp',selectedComp,compIdx)">X</button>
+      
       <component :is="comp.type" :propsData="comp.props"></component>
       <div class="actionBtns flex" >
         
         <button type="button" class="small btn btn-info fa fa-plus" data-toggle="modal" data-target="#exampleModal" @click="showCompBtns(compIdx)">Add Component</button>
-        <select v-if="comp.showAddCompButton === true" class="chooseComp" v-model="selectedComp.comp">
+        
+        <select v-if="comp.showAddCompButton" class="chooseComp" v-model="selectedComp.comp">
           <option v-for="option in options" :value="option.value">
             {{ option.text }}
           </option>
         </select>
-        <button v-if="comp.showAddCompButton === true" class="small btn btn-success" @click="addorDeleteComp('addComp',selectedComp,compIdx)">add</button>
+        <button v-if="comp.showAddCompButton" class="small btn btn-success" @click="addorDeleteComp('addComp',selectedComp,compIdx)">add</button>
         <!--<button class="small btn btn-danger" @click="comp.showAddCompButton = false">cancel</button>-->
       </div>
     </template>
