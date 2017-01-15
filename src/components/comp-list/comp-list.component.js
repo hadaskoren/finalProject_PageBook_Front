@@ -1,15 +1,20 @@
 import { mapGetters,mapMutations } from 'vuex'
-import {ADD_COMP} from '../../modules/currSite/currSite.module';
-
-
 import HeaderTemplate from '../template-components/header-template';
-import PicTextSectionTemplate from '../template-components/pic-text-section-template';
+import PicTextTemplate from '../template-components/pic-text-template';
 import IconListTemplate from '../template-components/icon-list-template';
 import PicListTemplate from '../template-components/pic-list-template';
+import CompModal from '../comp-modal';
 
 export default  {
   data: () => {
     return {
+      selectedComp: {
+        selected:'choose comp',
+        comp: 'test',
+        idx: 0
+      },
+      showModal: false,
+      options: []
     }
   },
   computed: {
@@ -18,14 +23,35 @@ export default  {
     ])
   },
   methods: {
-    ...mapMutations({
-      addComp: ADD_COMP
-    })
+    addorDeleteComp(type,selectedComp,compIdx) {
+      this.selectedComp.idx = compIdx;
+      if(type === 'addComp') {
+        this.$store.dispatch('addComp', selectedComp)
+      } else {
+        this.$store.commit('DELETE_COMP', selectedComp.idx)  
+      }
+      
+    },
+    showCompBtns(compIdx) {
+      this.$store.dispatch('showCompBtns', compIdx)
+    },
+    updateCompsOptions() {
+      this.getComps.forEach(comp => {
+          this.options.push({
+            text: comp.type,
+            value: comp
+          });
+      });
+    }
   },
   components: {
     HeaderTemplate,
-    PicTextSectionTemplate,
+    PicTextTemplate,
     IconListTemplate,
-    PicListTemplate
+    PicListTemplate,
+    CompModal
+  },
+  created() {
+    this.updateCompsOptions();
   }
 }

@@ -1,4 +1,30 @@
-<nav class="navbar navbar-default">
-  Nav bar
-</nav>
+<nav class="nav">
+  <div class="flex space-between">
+    <div class="nav-left">
+      <a class="nav-item is-brand" href="#">
+        <h1>Page Book</h1>
+      </a>
+    </div>
 
+    <div class="nav-center">
+        <router-link to="/" tag="a" active-class="active">
+          <a class="nav-item">Editor</a>
+      </router-link>
+      <router-link to="/editor" tag="a" active-class="active">
+          <a class="nav-item">Editor</a>
+      </router-link>
+    </div>
+
+    <div class="nav-right">
+      <!--<router-link v-if:to="/editor" tag="a" active-class="active">
+          <a class="nav-item">Sign In</a>
+      </router-link>
+      <router-link to="/editor" tag="a" active-class="active">
+          <a class="nav-item">Sign In</a>
+      </router-link>-->
+      <router-link to="/editor" tag="a" active-class="active">
+          <a class="nav-item">Sign Out</a>
+      </router-link>
+    </div>
+  </div>
+</nav>

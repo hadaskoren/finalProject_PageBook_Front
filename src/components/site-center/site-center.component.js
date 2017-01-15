@@ -4,7 +4,6 @@ import editor from '../editor';
 export default  {
   data: () => {
     return {
-      items: [],
     }
   },
   methods : {
