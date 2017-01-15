@@ -1,3 +1,13 @@
+import Vue from 'vue';
+import VueResource from 'vue-resource';
+import VueRouter from 'vue-router';
+import router from '../../routes';
+// import {router} from 'vue-router';
+
+// Vue.use(VueRouter);
+
+
+
 
 const state = {
   id:'',
@@ -6,10 +16,26 @@ const state = {
 };
 
 const mutations = {
+  updateCurrUser(state, user) {
+    state.id = user._id;
+    state.username = user.username;
+    state.siteIDs = user.siteIds;
+    router.push('/editor');
+    
+  }
   
 }
 
-const actions = {};
+const actions = {
+  getUser(context, user) {
+    Vue.http.post('http://localhost:3003/login', user)
+              .then(res => res.json())
+              .then(json => context.commit('updateCurrUser', json.user))
+              .then(res => context.dispatch('getSite', context.state.siteIDs[0]));
+           
+  }
+  
+};
 
 const getters = {
 };

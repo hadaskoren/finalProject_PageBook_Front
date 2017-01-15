@@ -1,3 +1,6 @@
+
+
+
 import {Interfaces} from '../../interfaces/interfaces';
 import * as types from '../../mutation-types/mutation-types'
 
@@ -7,6 +10,7 @@ const state = {
     url: '',
     isPublished: false,
     comps: [
+
         JSON.parse(JSON.stringify(Interfaces['header-template'])),
         JSON.parse(JSON.stringify(Interfaces['pic-text-template'])),
         JSON.parse(JSON.stringify(Interfaces['icon-list-template'])),
@@ -15,7 +19,17 @@ const state = {
 };
 
 const mutations = {
-    [types.ADD_COMP](state, compSelectedInterface) {
+
+    updateCurrSite(state, site) {
+        //   console.log(state);
+        state.id = site._id;
+        state.isPublished = site.isPublished;
+        state.siteName = site.siteName;
+        state.url = site.url;
+        state.comps = site.comps;
+        //   console.log(site);
+    },
+     [types.ADD_COMP](state, compSelectedInterface) {
         console.log('state.comps',state.comps);
         state.comps.splice(compSelectedInterface.idx,0,compSelectedInterface)
     },
@@ -25,9 +39,30 @@ const mutations = {
     [types.DELETE_COMP](state,compIdx) {
         state.comps.splice(compIdx,1);
     }
-};
+}
 
 const actions = {
+    getSite(context, siteID) {
+        Vue.http.get(`http://localhost:3003/data/sites/${siteID}`)
+            .then(res => res.json())
+            .then(json => { context.commit('updateCurrSite', json) })
+        // .then(res => context.dispatch('getSite', context.state.siteIDs[0]));
+    },
+    saveCurrSite(context) {
+        const siteToSave = {
+            _id: context.state.id,
+            isPublished: context.state.isPublished,
+            siteName: context.state.siteName,
+            url: context.state.url,
+            comps: context.state.comps
+        }
+
+        console.log('siteToSave', siteToSave);
+        Vue.http.put(`http://localhost:3003/data/sites/${context.state.id}`, siteToSave)
+        .then(res => res.json())
+        .then(json => console.log(json))
+    },
+   
     addComp(context,selectedComp){
         var compSelectedInterface = (JSON.parse(JSON.stringify(Interfaces[selectedComp.comp.type])));
         compSelectedInterface.idx = selectedComp.idx+1;
