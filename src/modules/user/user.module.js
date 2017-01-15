@@ -20,7 +20,8 @@ const mutations = {
     state.id = user._id;
     state.username = user.username;
     state.siteIDs = user.siteIds;
-    router.push('/editor');
+    // console.log(user);
+    router.push(`/user-dashboard/${user.username}`);
     
   }
   
@@ -31,7 +32,6 @@ const actions = {
     Vue.http.post('http://localhost:3003/login', user)
               .then(res => res.json())
               .then(json => context.commit('updateCurrUser', json.user))
-              .then(res => context.dispatch('getSite', context.state.siteIDs[0]));
            
   }
   

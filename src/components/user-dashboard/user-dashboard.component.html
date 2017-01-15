@@ -1,0 +1,11 @@
+<div>
+    <section class="user-dashboard">
+        <h1>User Dashboard</h1>
+        <ul class="sites-list">
+            <li v-for="site in sites"> 
+                <h2>{{site.siteName}}</h2>
+                <button @click="editSite(site._id)">edit</button>
+            </li>
+        </ul>
+    </section>
+</div>

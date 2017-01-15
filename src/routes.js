@@ -3,11 +3,24 @@ import VueRouter from 'vue-router';
 import SiteCenter from './components/site-center';
 import Editor from './components/editor';
 import Login from './components/login';
+import Home from './components/home';
+import UserDashboard from './components/user-dashboard';
+
 
 const routes = [{
   path: '/',
   name: 'site-center',
   component: SiteCenter
+},
+{
+  path: '/user-dashboard/:id',
+  name: 'user-dashboard',
+  component: UserDashboard
+},
+{
+  path: '/home',
+  name: 'home',
+  component: Home
 },
 {
   path: '/editor',
