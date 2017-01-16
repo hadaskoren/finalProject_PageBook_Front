@@ -5,6 +5,8 @@ import Editor from './components/editor';
 import Login from './components/login';
 import Home from './components/home';
 import UserDashboard from './components/user-dashboard';
+import Signup from './components/signup';
+
 
 
 const routes = [{
@@ -16,6 +18,11 @@ const routes = [{
   path: '/user-dashboard/:id',
   name: 'user-dashboard',
   component: UserDashboard
+},
+{
+  path: '/signup',
+  name: 'signup',
+  component: Signup
 },
 {
   path: '/home',
