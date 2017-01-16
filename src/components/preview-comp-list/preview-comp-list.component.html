@@ -1,0 +1,9 @@
+<div>
+  <section class="preview-comp-list">
+    <section v-for="(comp, compIdx) in getComps">
+      <div :id="`${comp.type}-${compIdx}`">
+        <component :is="comp.type" :propsData="comp.props" :compIndex="compIdx"></component>
+      </div>
+    </section>
+  </section>
+</div>

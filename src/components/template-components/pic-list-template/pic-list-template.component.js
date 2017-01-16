@@ -1,5 +1,5 @@
 export default {
-  props: ['propsData'],
+  props: ['propsData', 'compIndex'],
   data: () => {
     return {
       uploadedImg1: '',

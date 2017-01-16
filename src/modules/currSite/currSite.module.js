@@ -1,9 +1,7 @@
-
 import Vue from 'vue';
 import {Interfaces} from '../../interfaces/interfaces';
 import * as types from '../../mutation-types/mutation-types'
 import router from '../../routes';
-
 
 const state = {
     id: '',
@@ -11,7 +9,6 @@ const state = {
     url: '',
     isPublished: false,
     comps: [
-
         JSON.parse(JSON.stringify(Interfaces['header-template'])),
         JSON.parse(JSON.stringify(Interfaces['pic-text-template'])),
         JSON.parse(JSON.stringify(Interfaces['icon-list-template'])),
@@ -41,6 +38,10 @@ const mutations = {
     },
     [types.DELETE_COMP](state,compIdx) {
         state.comps.splice(compIdx,1);
+    },
+    [types.SAVE_PROP_TEXT](state, compData) {
+        state.comps[compData.compIndex].props[event.srcElement.localName] = event.srcElement.innerHTML;
+        console.log('state.comps',state.comps);
     }
 }
 
@@ -72,7 +73,7 @@ const actions = {
         compSelectedInterface.idx = selectedComp.idx+1;
         // Hide add buttons
         context.getters.getComps.forEach(comp => {
-            if(comp.showAddCompButton === true) {
+            if(comp.showAddCompButton) {
                 context.commit(types.SHOW_COMP_ADD_BTNS, comp);
             }
         });
@@ -84,6 +85,11 @@ const actions = {
         });
         context.commit(types.SHOW_COMP_ADD_BTNS, currComp);
     },
+
+    saveCompProp({commit},compData) {
+        console.log('In action');
+        commit(types.SAVE_PROP_TEXT,compData);
+    }
 };
 
 const getters = {

@@ -1,0 +1,18 @@
+<nav class="nav">
+  <div class="flex space-between">
+    <div class="nav-left">
+      <a class="nav-item is-brand" href="#">
+        <h1>Site Name</h1>
+      </a>
+    </div>
+
+    <div class="nav-center">
+      <ul class="flex" >
+        <li v-for="(comp,index) in getComps"><a :href="`#${comp.type}-${index}`">{{comp.type}}</a></li>
+        
+      </ul>
+    </div>
+
+
+  </div>
+</nav>
