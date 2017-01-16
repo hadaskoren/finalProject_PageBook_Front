@@ -1,6 +1,6 @@
 
 export default  {
-  props: ['propsData'],
+  props: ['propsData', 'compIndex'],
   data: () => {
     return {
       // h2_text_1: 'Lorem ipsum dolor adipiscing',

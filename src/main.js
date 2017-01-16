@@ -2,6 +2,7 @@ import './style.scss';
 import './vendor';
 import './vue-plugins';
 
+
 import Vue from 'vue';
 import router from './routes';
 import store from './store';

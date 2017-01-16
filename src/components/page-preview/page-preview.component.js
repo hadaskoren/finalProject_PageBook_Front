@@ -1,5 +1,4 @@
-import compList from '../comp-list';
-import editSiteNavbar from '../edit-site-navbar';
+import previewCompList from '../preview-comp-list';
 import newSiteNavbar from '../new-site-navbar';
 
 export default  {
@@ -11,8 +10,7 @@ export default  {
     
   },
   components: {
-    compList,
-    editSiteNavbar,
+    previewCompList,
     newSiteNavbar
   }
 }

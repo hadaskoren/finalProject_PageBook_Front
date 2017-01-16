@@ -8,6 +8,7 @@ import CompModal from '../comp-modal';
 export default  {
   data: () => {
     return {
+      addCompFirstBtn: false,
       selectedComp: {
         selected:'choose comp',
         comp: 'test',
@@ -26,7 +27,10 @@ export default  {
     addorDeleteComp(type,selectedComp,compIdx) {
       this.selectedComp.idx = compIdx;
       if(type === 'addComp') {
-        this.$store.dispatch('addComp', selectedComp)
+        this.$store.dispatch('addComp', selectedComp);
+        if(this.addCompFirstBtn){
+          this.addCompFirstBtn = !this.addCompFirstBtn;
+        }
       } else {
         this.$store.commit('DELETE_COMP', selectedComp.idx)  
       }
@@ -34,6 +38,9 @@ export default  {
     },
     showCompBtns(compIdx) {
       this.$store.dispatch('showCompBtns', compIdx)
+    },
+    showCompBtnsForFirstBtn() {
+      this.addCompFirstBtn = !this.addCompFirstBtn;
     },
     updateCompsOptions() {
       this.getComps.forEach(comp => {

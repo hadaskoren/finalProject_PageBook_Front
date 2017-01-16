@@ -1,13 +1,21 @@
 <div>
 	<section id="header">
 		<div class="inner">
-			<span class="icon major fa-cloud"></span>
+			<!--<span class="icon major fa-cloud"></span>
 			<h1>{{propsData.h1_text_1}}<strong>{{propsData.h1_text_2_strong}}</strong>{{propsData.h1_text_3}}<br>
 			little freebie from <a :href="h1_a_href">{{propsData.h1_a_text}}</a>.</h1>
 			<p>{{propsData.p_text_1}}<br>
 			{{propsData.p_text_2}}</p>
 			<ul class="actions">
 				<li><a href="#one" class="button scrolly">{{propsData.li_a_text}}</a></li>
+			</ul>-->
+
+			<span class="icon major fa-cloud"></span>
+			<h1 contenteditable="true" @keyup="saveCompProp($event)">{{propsData.h1}}</h1>
+			<h2 contenteditable="true" @keyup="saveCompProp($event)">{{propsData.h2}}</h2>
+			<p contenteditable="true" @keyup="saveCompProp($event)">{{propsData.p}}</p>
+			<ul class="actions">
+				<li><a href="#one" class="button scrolly" contenteditable="true" @keyup="saveCompProp($event)">{{propsData.a}}</a></li>
 			</ul>
 		</div>
 	</section>

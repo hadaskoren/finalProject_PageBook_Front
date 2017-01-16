@@ -1,6 +1,6 @@
 
 export default  {
-  props: ['propsData'],
+  props: ['propsData', 'compIndex'],
   data: () => {
     return {
       
@@ -17,6 +17,14 @@ export default  {
     }
   },
   methods : {
+    saveCompProp(event) {
+      var compData = {
+          event,
+          compIndex: this.compIndex
+      }
+      console.log('Save Text!', event.srcElement.localName);
+      this.$store.dispatch('saveCompProp', compData);
+    }
   },
   components: {
   }

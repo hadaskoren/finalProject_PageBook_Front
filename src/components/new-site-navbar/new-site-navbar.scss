@@ -1,16 +1,14 @@
  h1{
-    background: url(http://apod.nasa.gov/apod/image/0603/coma_misti.jpg) -80px -80px;
-  color: red;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
+  color: white;
   font-weight: bold;
   font-size: 30px;
   font-family: arial, helvetica;
   text-align: center; 
+  margin:0;
   }
 
   nav {
-    background: #9eb6c0;
+    background: black;
     padding: 1.2em;
     height: 80px;
     // position: fixed;
@@ -18,13 +16,18 @@
     // left: 0;
   }
   .nav-center {
-    color: #3a4144;
-    margin-top: 0.6em;
+    color: grey;
+    margin: 0 auto;
   }
 
   a {
     text-decoration: none;
   }
+
+  ul {
+    list-style:none;
+  }
+
 
   
   
