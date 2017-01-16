@@ -33,6 +33,12 @@ const actions = {
               .then(res => res.json())
               .then(json => context.commit('updateCurrUser', json.user))
            
+  },
+  saveNewUser(context, userData) {
+    // console.log(userData);
+    Vue.http.post('http://localhost:3003/signup', userData)
+              .then(res => res.json())
+              .then(json => console.log(json));
   }
   
 };
