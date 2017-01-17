@@ -8,11 +8,11 @@ export default  {
   },
   methods: {
     saveSite() {
-      this.$store
-        .dispatch('saveCurrSite');
+      this.$store.dispatch('saveCurrSite');
     },
-    previewsite() {
-
+    previewSite() {
+      console.log('preview!');
+      this.$store.dispatch('previewSite');
     }
   }
 }

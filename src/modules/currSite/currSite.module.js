@@ -8,6 +8,7 @@ const state = {
     siteName: '',
     url: '',
     isPublished: false,
+    isEditable: false,
     comps: [
         JSON.parse(JSON.stringify(Interfaces['header-template'])),
         JSON.parse(JSON.stringify(Interfaces['pic-text-template'])),
@@ -41,7 +42,13 @@ const mutations = {
     },
     [types.SAVE_PROP_TEXT](state, compData) {
         state.comps[compData.compIndex].props[event.srcElement.localName] = event.srcElement.innerHTML;
-        console.log('state.comps', state.comps);
+    },
+    [types.PREVIEW_SITE](state) {
+        router.push('/preview');
+        state.isEditable = false;
+    },
+    [types.MAKE_EDITABLE](state) {
+        state.isEditable = true;
     }
 }
 
@@ -91,12 +98,19 @@ const actions = {
 
     saveCompProp({commit}, compData) {
         console.log('In action');
-        commit(types.SAVE_PROP_TEXT, compData);
+        commit(types.SAVE_PROP_TEXT,compData);
+    },
+    previewSite({commit}) {
+        commit(types.PREVIEW_SITE);
+    },
+    makeEditable({commit}) {
+        commit(types.MAKE_EDITABLE);
     }
 };
 
 const getters = {
-    getComps: (state) => { return state.comps }
+    getComps: (state) => { return state.comps },
+    getIsEditable: (state) => { return state.isEditable}
 };
 
 export default {
