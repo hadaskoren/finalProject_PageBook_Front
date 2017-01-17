@@ -6,7 +6,7 @@ import Login from './components/login';
 import Home from './components/home';
 import UserDashboard from './components/user-dashboard';
 import Preview from './components/page-preview';
-
+import Signup from './components/signup';
 
 const routes = [{
   path: '/',
@@ -17,6 +17,11 @@ const routes = [{
   path: '/user-dashboard/:id',
   name: 'user-dashboard',
   component: UserDashboard
+},
+{
+  path: '/signup',
+  name: 'signup',
+  component: Signup
 },
 {
   path: '/home',
