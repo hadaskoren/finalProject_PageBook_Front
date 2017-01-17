@@ -5,6 +5,7 @@ import Editor from './components/editor';
 import Login from './components/login';
 import Home from './components/home';
 import UserDashboard from './components/user-dashboard';
+import Preview from './components/page-preview';
 
 
 const routes = [{
@@ -31,6 +32,11 @@ const routes = [{
   path: '/login',
   name: 'login',
   component: Login
+},
+{
+  path: '/preview',
+  name: 'preview',
+  component: Preview
 },
 
 //  {
