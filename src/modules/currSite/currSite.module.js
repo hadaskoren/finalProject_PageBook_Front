@@ -95,7 +95,6 @@ const actions = {
         });
         context.commit(types.SHOW_COMP_ADD_BTNS, currComp);
     },
-
     saveCompProp({commit}, compData) {
         console.log('In action');
         commit(types.SAVE_PROP_TEXT,compData);
