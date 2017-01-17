@@ -20,11 +20,13 @@
           <a class="nav-item">Your Sites</a>
       </router-link>
     </div>
-
     <div class="nav-right">
-      <router-link to="/editor" tag="a" active-class="active">
-          <a class="nav-item">Sign Out</a>
+      <router-link v-if="!isLoggedIn" to="/login" tag="a" active-class="active">
+          <a class="nav-item">Login</a>
       </router-link>
+      <!--<router-link v-else to="/editor" tag="a" active-class="active">-->
+          <a v-else class="nav-item" @click="logout">Logout</a>
+      <!--</router-link>-->
     </div>
   </div>
 </nav>

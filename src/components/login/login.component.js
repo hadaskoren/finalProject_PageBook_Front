@@ -6,7 +6,9 @@ export default {
   data: () => {
     return {
       username: '',
-      password: ''
+      password: '',
+      isToLogin: true
+
 
     }
   },
@@ -16,6 +18,14 @@ export default {
         .dispatch('getUser', {
           username: this.username,
           password: this.password
+        });
+    },
+    signup() {
+      this.$store
+        .dispatch('signupUser', {
+          username: this.username,
+          password: this.password,
+          siteIds: []
         });
     }
   },

@@ -4,8 +4,24 @@
         <!--username: {{username}}-->
         <br>
         <!--password: {{password}}-->
-        <input type="text" v-model="username">
-        <input type="password" v-model="password">
-        <button @click="login">login</button>
+        <template v-if="isToLogin">
+            <input type="text" v-model="username" placeholder="username">
+            <input type="password" v-model="password" placeholder="password">
+            <button @click="login">login</button>
+            <div class="signup-suggest">
+                <p class="para">New to Page Book? <a href="" @click.prevent="isToLogin = false">Signup</a> </p>            
+            </div>
+        </template>
+        <template v-else>
+            <input type="text" v-model="username" placeholder="username">
+            <input type="password" v-model="password" placeholder="password">
+            <button @click="signup">Signup</button>
+            <div class="signup-suggest">
+                <p class="para">Already have a Page Book account? <a href="" @click.prevent="isToLogin = true">Login</a></p>            
+            </div>
+        </template>
+
+        
+        
     </section>
 </div>

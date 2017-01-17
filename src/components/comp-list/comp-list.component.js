@@ -4,6 +4,8 @@ import PicTextTemplate from '../template-components/pic-text-template';
 import IconListTemplate from '../template-components/icon-list-template';
 import PicListTemplate from '../template-components/pic-list-template';
 import CompModal from '../comp-modal';
+import {Interfaces} from '../../interfaces/interfaces';
+
 
 export default  {
   data: () => {
@@ -43,12 +45,20 @@ export default  {
       this.addCompFirstBtn = !this.addCompFirstBtn;
     },
     updateCompsOptions() {
-      this.getComps.forEach(comp => {
-          this.options.push({
-            text: comp.type,
-            value: comp
-          });
-      });
+      for(let key in Interfaces) {
+        const obj = {
+          text: key,
+          value: Interfaces[key]
+        }
+        this.options.push(obj);
+      }
+      // this.getComps.forEach(comp => {
+      //   console.log(Interfaces);
+      //     this.options.push({
+      //       text: comp.type,
+      //       value: comp
+      //     });
+      // });
     }
   },
   components: {
