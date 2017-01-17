@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import {Interfaces} from '../../interfaces/interfaces';
+import { Interfaces } from '../../interfaces/interfaces';
 import * as types from '../../mutation-types/mutation-types'
 import router from '../../routes';
 
@@ -27,21 +27,21 @@ const mutations = {
         state.comps = site.comps;
         console.log(site);
         router.push('/editor');
-        
+
     },
-     [types.ADD_COMP](state, compSelectedInterface) {
-        console.log('state.comps',state.comps);
-        state.comps.splice(compSelectedInterface.idx,0,compSelectedInterface)
+    [types.ADD_COMP](state, compSelectedInterface) {
+        console.log('state.comps', state.comps);
+        state.comps.splice(compSelectedInterface.idx, 0, compSelectedInterface)
     },
-    [types.SHOW_COMP_ADD_BTNS](state,comp) {
+    [types.SHOW_COMP_ADD_BTNS](state, comp) {
         comp.showAddCompButton = !comp.showAddCompButton;
     },
-    [types.DELETE_COMP](state,compIdx) {
-        state.comps.splice(compIdx,1);
+    [types.DELETE_COMP](state, compIdx) {
+        state.comps.splice(compIdx, 1);
     },
     [types.SAVE_PROP_TEXT](state, compData) {
         state.comps[compData.compIndex].props[event.srcElement.localName] = event.srcElement.innerHTML;
-        console.log('state.comps',state.comps);
+        console.log('state.comps', state.comps);
     }
 }
 
@@ -64,31 +64,34 @@ const actions = {
 
         console.log('siteToSave', siteToSave);
         Vue.http.put(`http://localhost:3003/data/sites/${context.state.id}`, siteToSave)
-        .then(res => res.json())
-        .then(json => console.log(json))
+            .then(res => res.json())
+            .then(json => {
+                toastr.options.timeOut = 1200;
+                toastr.success('Saved Successfully')
+            });
     },
-   
-    addComp(context,selectedComp){
+
+    addComp(context, selectedComp) {
         var compSelectedInterface = (JSON.parse(JSON.stringify(Interfaces[selectedComp.comp.type])));
-        compSelectedInterface.idx = selectedComp.idx+1;
+        compSelectedInterface.idx = selectedComp.idx + 1;
         // Hide add buttons
         context.getters.getComps.forEach(comp => {
-            if(comp.showAddCompButton) {
+            if (comp.showAddCompButton) {
                 context.commit(types.SHOW_COMP_ADD_BTNS, comp);
             }
         });
         context.commit(types.ADD_COMP, compSelectedInterface);
     },
-    showCompBtns(context,compIdx) {
-        var currComp = context.getters.getComps.find((comp,i)=>{
+    showCompBtns(context, compIdx) {
+        var currComp = context.getters.getComps.find((comp, i) => {
             return i === compIdx;
         });
         context.commit(types.SHOW_COMP_ADD_BTNS, currComp);
     },
 
-    saveCompProp({commit},compData) {
+    saveCompProp({commit}, compData) {
         console.log('In action');
-        commit(types.SAVE_PROP_TEXT,compData);
+        commit(types.SAVE_PROP_TEXT, compData);
     }
 };
 
