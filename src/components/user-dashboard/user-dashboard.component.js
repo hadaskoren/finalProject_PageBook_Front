@@ -20,6 +20,9 @@ export default {
   components: {
   },
   created() {
+    // toastr.options.closeButton = false;
+    toastr.options.timeOut = 1200;
+    toastr.info('Welcome ' + this.$store.state.user.username);
     const sitesIds = JSON.stringify(this.$store.state.user.siteIDs);
     // console.log(sitesIds);
     Vue.http.post(`http://localhost:3003/data/sites/list`, sitesIds)

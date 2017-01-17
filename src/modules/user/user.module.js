@@ -10,6 +10,7 @@ import router from '../../routes';
 
 
 const state = {
+  isLoggedIn: false,
   id:'',
   username: '',
   siteIDs: []
@@ -20,9 +21,13 @@ const mutations = {
     state.id = user._id;
     state.username = user.username;
     state.siteIDs = user.siteIds;
-    // console.log(user);
+    state.isLoggedIn = true;
     router.push(`/user-dashboard/${user.username}`);
     
+  },
+  logout(state) {
+    state.isLoggedIn = false;
+    router.push('/home');
   }
   
 }
@@ -34,11 +39,23 @@ const actions = {
               .then(json => context.commit('updateCurrUser', json.user))
            
   },
+  signupUser(context, user) {
+    Vue.http.post('http://localhost:3003/signup', user)
+              .then(res => res.json())
+              .then(json => {
+                toastr.options.timeOut = 1200;
+                toastr.success('Welcome to Book Page')
+                router.push('/home')
+              });  
+  },
   saveNewUser(context, userData) {
     // console.log(userData);
     Vue.http.post('http://localhost:3003/signup', userData)
               .then(res => res.json())
               .then(json => console.log(json));
+  },
+  logout(context) {
+    context.commit('logout');
   }
   
 };
