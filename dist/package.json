@@ -5,6 +5,6 @@
  "author": "Alon Danoch",
  "private": true,
  "scripts": {
-   "postinstall": "npm install express"
+   "postinstall": "npm install express cors body-parser mongodb multer client-sessions"
  }
 }

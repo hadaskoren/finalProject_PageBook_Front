@@ -52,7 +52,7 @@ const actions = {
    
     getSite(context, siteId) {
         console.log(siteId);
-        Vue.http.get(`http://localhost:3003/data/sites/${siteId}`)
+        Vue.http.get(`data/sites/${siteId}`)
             .then(res => res.json())
             .then(json => { context.commit('updateCurrSite', json) })
         // .then(res => context.dispatch('getSite', context.state.siteIDs[0]));
@@ -66,7 +66,7 @@ const actions = {
             comps: context.state.comps
         }
         console.log('siteToSave', siteToSave);
-        Vue.http.put(`http://localhost:3003/data/sites/${context.state.id}`, siteToSave)
+        Vue.http.put(`data/sites/${context.state.id}`, siteToSave)
             .then(res => res.json())
             .then(json => {
                 toastr.options.timeOut = 1200;
@@ -108,7 +108,7 @@ const actions = {
             id: context.getters.getCurrUserID,
             sitesIds: context.getters.getSiteIds
         }
-        Vue.http.post('http://localhost:3003/newsite', {site, userInfo})
+        Vue.http.post('newsite', {site, userInfo})
             .then(res => res.json())
             .then(json => {
                 toastr.options.timeOut = 1200;

@@ -7,7 +7,7 @@ import Vue from 'vue';
  * @returns {Promise}
  */
 function signin( {username,password} ) {
-  return Vue.http.post('http://localhost:3003/login', {username: username, pass: password} )
+  return Vue.http.post('login', {username: username, pass: password} )
     .then(res => res.json())
     .then(({token, user}) => {
       console.log('Signedin user:', user);
@@ -24,7 +24,7 @@ function signin( {username,password} ) {
  * @returns {Promise}
  */
 function addContact( {name,email,tel,msg} ) {
-  return Vue.http.post('http://localhost:3003/data/contacts/', {name: name, email: email, tel: tel, msg: msg} )
+  return Vue.http.post('data/contacts/', {name: name, email: email, tel: tel, msg: msg} )
     .then(res => res.json())
       console.log('added contact:', contact);
       return contact;

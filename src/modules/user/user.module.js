@@ -58,7 +58,7 @@ const actions = {
     data = JSON.stringify(data);
 
     // need to delete both from sitesList and siteID's afterpositive response from sever
-    Vue.http.delete(`http://localhost:3003/deleteSite/${site._id}`)
+    Vue.http.delete(`deleteSite/${site._id}`)
       .then(res => res.json())
       .then(json => {
         context.commit('deleteSiteFromState', site._id);
@@ -66,7 +66,7 @@ const actions = {
   },
   getSitesList(context, sitesIds) {
     console.log('Gettongs sites list', context.state.siteIDs);
-    Vue.http.post(`http://localhost:3003/data/sites/list`, context.state.siteIDs)
+    Vue.http.post(`data/sites/list`, context.state.siteIDs)
       .then(res => res.json())
       .then(json => console.log(context.commit('updateSitesList', json)));
   },
@@ -75,13 +75,13 @@ const actions = {
     console.log(tokenInLocalStorage);
     if (tokenInLocalStorage) {
       console.log(123);
-      Vue.http.post('http://localhost:3003/token-login', { token: JSON.parse(tokenInLocalStorage) })
+      Vue.http.post('token-login', { token: JSON.parse(tokenInLocalStorage) })
         .then(res => res.json())
         .then(json => { console.log('json.user', json.user); context.commit('updateCurrUser', json.user) })
     }
   },
   getUser(context, user) {
-    Vue.http.post('http://localhost:3003/login', user)
+    Vue.http.post('login', user)
       .then(res => res.json())
       .then(json => { console.log(json); context.commit('updateCurrUser', json) })
       .catch(err => {
@@ -91,7 +91,7 @@ const actions = {
 
   },
   signupUser(context, user) {
-    Vue.http.post('http://localhost:3003/signup', user)
+    Vue.http.post('signup', user)
       .then(res => res.json())
       .then(json => {
         toastr.options.timeOut = 1200;
@@ -101,7 +101,7 @@ const actions = {
   },
   saveNewUser(context, userData) {
     // console.log(userData);
-    Vue.http.post('http://localhost:3003/signup', userData)
+    Vue.http.post('signup', userData)
       .then(res => res.json())
       .then(json => console.log(json));
   },
