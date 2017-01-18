@@ -1,4 +1,5 @@
 
+import mainNav from '../main-nav';
 
 export default {
     data: () => {
@@ -19,5 +20,6 @@ export default {
         }
     },
     components: {
+        mainNav
     }
 }

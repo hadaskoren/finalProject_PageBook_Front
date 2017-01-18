@@ -2,9 +2,9 @@
   <section id="three" class="main style1 special">
 				<div class="container">
 					<header class="major">
-						<h2>{{propsData.h2_text}}</h2>
+						<h2 tag-refName="h2_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{propsData.h2_text}}</h2>
 					</header>
-					<p>{{propsData.p_text}}</p>
+					<p tag-refName="p_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{propsData.p_text}}</p>
 					<div class="row 150%">
 						<div class="4u 12u$(medium)">
 							<div class="uploadImage">
@@ -18,8 +18,8 @@
 									</div>
 								</div>
 							</div>
-							<h3>{{propsData.card_1_h3_text}}</h3>
-							<p>{{propsData.card_1_p_text}}</p>
+							<h3 tag-refName="card_1_h3_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{propsData.card_1_h3_text}}</h3>
+							<p tag-refName="card_1_p_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{propsData.card_1_p_text}}</p>
 							<ul class="actions">
 								<li><a href="#" class="button">More</a></li>
 							</ul>
@@ -34,8 +34,8 @@
 									</div>
 								</div>
 							</div>
-							<h3>{{propsData.card_1_h3_text}}</h3>
-							<p>{{propsData.card_2_p_text}}</p>
+							<h3 tag-refName="card_2_h3_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{propsData.card_1_h3_text}}</h3>
+							<p tag-refName="card_2_p_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{propsData.card_2_p_text}}</p>
 							<ul class="actions">
 								<li><a href="#" class="button">More</a></li>
 							</ul>
@@ -50,8 +50,8 @@
 									</div>
 								</div>
 							</div>
-							<h3>{{propsData.card_1_h3_text}}</h3>
-							<p>{{propsData.card_2_p_text}}</p>
+							<h3 tag-refName="card_3_h3_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{propsData.card_1_h3_text}}</h3>
+							<p tag-refName="card_3_p_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{propsData.card_2_p_text}}</p>
 							<ul class="actions">
 								<li><a href="#" class="button">More</a></li>
 							</ul>

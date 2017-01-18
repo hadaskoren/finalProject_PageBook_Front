@@ -19,17 +19,12 @@ const state = {
 };
 
 const mutations = {
-
     updateCurrSite(state, site) {
-        //   console.log(state);
         state.id = site._id;
         state.isPublished = site.isPublished;
         state.siteName = site.siteName;
         state.url = site.url;
         state.comps = site.comps;
-        console.log(site);
-        router.push('/editor');
-
     },
     [types.ADD_COMP](state, compSelectedInterface) {
         console.log('state.comps', state.comps);
@@ -42,14 +37,15 @@ const mutations = {
         state.comps.splice(compIdx, 1);
     },
     [types.SAVE_PROP_TEXT](state, compData) {
-        state.comps[compData.compIndex].props[event.srcElement.localName] = event.srcElement.innerHTML;
+        state.comps[compData.compIndex].props[compData.refName] = compData.htmlText;
     },
-    [types.PREVIEW_SITE](state) {
-        router.push('/preview');
+    [types.EDITABLE_FALSE](state) {
         state.isEditable = false;
+        console.log('state.isEditable = false',state.isEditable);
     },
     [types.MAKE_EDITABLE](state) {
         state.isEditable = true;
+        console.log('state.isEditable = true',state.isEditable);
     }
 }
 
@@ -74,7 +70,6 @@ const actions = {
             url: context.state.url,
             comps: context.state.comps
         }
-
         console.log('siteToSave', siteToSave);
         Vue.http.put(`http://localhost:3003/data/sites/${context.state.id}`, siteToSave)
             .then(res => res.json())
@@ -83,7 +78,6 @@ const actions = {
                 toastr.success('Saved Successfully')
             });
     },
-
     addComp(context, selectedComp) {
         var compSelectedInterface = (JSON.parse(JSON.stringify(Interfaces[selectedComp.comp.type])));
         compSelectedInterface.idx = selectedComp.idx + 1;
@@ -105,17 +99,33 @@ const actions = {
         console.log('In action');
         commit(types.SAVE_PROP_TEXT,compData);
     },
-    previewSite({commit}) {
-        commit(types.PREVIEW_SITE);
+    editableFalse({commit}) {
+        commit(types.EDITABLE_FALSE);
     },
     makeEditable({commit}) {
         commit(types.MAKE_EDITABLE);
+    },
+    newSite({commit}) {
+        commit(types.MAKE_EDITABLE);
+    },
+    newSite(context, site) {
+        console.log('site',site);
+        Vue.http.post('http://localhost:3003/newsite', site)
+            .then(res => res.json())
+            .then(json => {
+                console.log('json',json);
+                toastr.options.timeOut = 1200;
+                toastr.success('Site '+ site.siteName+' was successfully created!');
+                context.commit('updateCurrSite',site);
+                router.push(`/editor/site/${json._id}`);
+            });  
     }
 };
 
 const getters = {
     getComps: (state) => { return state.comps },
-    getIsEditable: (state) => { return state.isEditable}
+    getIsEditable: (state) => { return state.isEditable},
+    getCurrSiteId: (state) => {return state.id}
 };
 
 export default {

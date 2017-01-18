@@ -75,6 +75,7 @@ const actions = {
 };
 
 const getters = {
+  getCurrUserID: (state) => { return state.id }
 };
 
 export default {

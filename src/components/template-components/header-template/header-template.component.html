@@ -11,11 +11,11 @@
 			</ul>-->
 
 			<span class="icon major fa-cloud"></span>
-			<h1 :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{propsData.h1}}</h1>
-			<h2 :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{propsData.h2}}</h2>
-			<p :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{propsData.p}}</p>
+			<h1 tag-refName="h1" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{propsData.h1}}</h1>
+			<h2 tag-refName="h2" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{propsData.h2}}</h2>
+			<p tag-refName="h3" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{propsData.p}}</p>
 			<ul class="actions">
-				<li><a href="#one" class="button scrolly" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{propsData.a}}</a></li>
+				<li><a href="#one" class="button scrolly" tag-refName="a" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{propsData.a}}</a></li>
 			</ul>
 		</div>
 	</section>

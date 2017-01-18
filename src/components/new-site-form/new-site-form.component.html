@@ -1,0 +1,11 @@
+<div>
+    <main-nav></main-nav>
+    <section class="new-site flex space-between">
+        <h1>New Site</h1>
+        <input type="text" v-model="siteName" placeholder="Enter site name">
+        <input type="text" v-model="siteUrl" placeholder="Enter URL">
+        <button @click="newSite">Create</button>
+        <!--<router-link class="small btn btn-info" :to="{name: 'editor',params: {id: site._id}}">edit</router-link>-->
+        
+    </section>
+</div>
