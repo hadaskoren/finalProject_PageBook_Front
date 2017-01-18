@@ -45,6 +45,7 @@ export const Interfaces = {
         type:'pic-list-template',
         name: '',
         showAddCompButton: false,
+        isEditable: false,
         props: {
             h2_text: 'Adipiscing amet consequat',
             p_text: 'Ante nunc accumsan et aclacus nascetur ac ante amet sapien sed.',

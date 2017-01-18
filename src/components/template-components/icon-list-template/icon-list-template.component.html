@@ -14,12 +14,13 @@
 				</div>
 				<div class="6u 6u$(medium)">
 					<header class="major">
-						<h2>{{propsData.h2_text_1}}<br>
-						{{propsData.h2_text_2}}</h2>
+						<h2 tag-refName="h2_text_1" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{propsData.h2_text_1}}</h2>
+						<br>
+						<h2 tag-refName="h2_text_2" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{propsData.h2_text_2}}</h2>
 					</header>
-					<p>{{propsData.p_1_text}}</p>
-					<p>{{propsData.p_2_text}}</p>
-					<p>{{propsData.p_3_text}}</p>
+					<p tag-refName="p_1_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{propsData.p_1_text}}</p>
+					<p tag-refName="p_2_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{propsData.p_2_text}}</p>
+					<p tag-refName="p_3_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{propsData.p_3_text}}</p>
 				</div>
 			</div>
 		</div>

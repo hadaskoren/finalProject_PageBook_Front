@@ -7,13 +7,12 @@
     </div>
 
     <div class="nav-center">
-      <!--<ul>
-        <li><a href="#">Preview Site</a></li>
-      </ul>-->
     </div>
 
     <div class="nav-right">
-      <button class="small btn btn-info" @click="previewSite">Preview Site</button>
+      <router-link class="small btn btn-info" :to="{name: 'prod',params: {id: getCurrSiteId}}">View on production</router-link>
+      <router-link class="small btn btn-info" :to="{name: 'preview',params: {id: getCurrSiteId}}">Preview Site</router-link>
+      
       <button class="small btn btn-success" @click="saveSite">Save</button>
     </div>
   </div>

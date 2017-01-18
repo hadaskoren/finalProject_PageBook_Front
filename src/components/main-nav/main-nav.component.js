@@ -1,5 +1,6 @@
 // import previewCompList from '../preview-comp-list';
 // import newSiteNavbar from '../new-site-navbar';
+import { mapGetters} from 'vuex'
 
 export default  {
   data: () => {
@@ -15,7 +16,10 @@ export default  {
   computed: {
       isLoggedIn() {
           return this.$store.state.user.isLoggedIn;
-      }
+      },
+      ...mapGetters([
+         'getCurrUserID'
+      ]),
   },
   components: {
     // previewCompList,
