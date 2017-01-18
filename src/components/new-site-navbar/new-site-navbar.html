@@ -2,7 +2,9 @@
   <div class="flex space-between">
     <div class="nav-left">
       <a class="nav-item is-brand" href="#">
-        <h1 v-if="getSiteName" tag-refName="h1" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.h1">{{getSiteName}}</h1>
+        <!--<h1 v-if="getSiteName" tag-refName="h1" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.h1">{{getSiteName}}</h1>-->
+        <h1 v-if="getSiteName">{{getSiteName}}</h1>
+        
         <h1 v-else>Site Name</h1>
       </a>
     </div>

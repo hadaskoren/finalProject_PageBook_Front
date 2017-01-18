@@ -1,6 +1,7 @@
 import previewCompList from '../preview-comp-list';
 import newSiteNavbar from '../new-site-navbar';
 import mainNav from '../main-nav';
+import { mapGetters } from 'vuex'
 
 export default  {
   data: () => {
@@ -18,6 +19,12 @@ export default  {
     mainNav
   },
   created() {
+    console.log('getComps',this.getComps)
     this.editableFalse();
+  },
+  computed: {
+    ...mapGetters([
+        'getComps'
+      ])
   }
 }

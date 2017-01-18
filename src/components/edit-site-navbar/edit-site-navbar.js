@@ -11,5 +11,6 @@ export default  {
     saveSite() {
       this.$store.dispatch('saveCurrSite');
     }
-  }
+  },
+  
 }

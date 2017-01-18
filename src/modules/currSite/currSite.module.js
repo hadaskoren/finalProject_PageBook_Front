@@ -26,6 +26,9 @@ const mutations = {
         state.url = site.url;
         state.comps = site.comps;
     },
+    updateComps(state, value) {
+        
+    },
     [types.ADD_COMP](state, compSelectedInterface) {
         console.log('state.comps', state.comps);
         state.comps.splice(compSelectedInterface.idx, 0, compSelectedInterface)
@@ -38,6 +41,7 @@ const mutations = {
     },
     [types.SAVE_PROP_TEXT](state, compData) {
         state.comps[compData.compIndex].props[compData.refName] = compData.htmlText;
+        console.log('state.comps',state.comps);
     },
     [types.EDITABLE_FALSE](state) {
         state.isEditable = false;
@@ -105,17 +109,13 @@ const actions = {
     //     commit(types.MAKE_EDITABLE);
     // },
     newSite(context, site) {
-        console.log('site',site);
         const userInfo = {
             id: context.getters.getCurrUserID,
             sitesIds: context.getters.getSiteIds
         }
-        console.log('useriddddsdsdsd', userInfo);
-        
         Vue.http.post('http://localhost:3003/newsite', {site, userInfo})
             .then(res => res.json())
             .then(json => {
-                console.log('json',json);
                 toastr.options.timeOut = 1200;
                 toastr.success('Site '+ site.siteName+' was successfully created!');
                 context.commit('updateCurrSite',site);
