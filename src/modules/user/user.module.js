@@ -84,6 +84,10 @@ const actions = {
     Vue.http.post('http://localhost:3003/login', user)
       .then(res => res.json())
       .then(json => { console.log(json); context.commit('updateCurrUser', json) })
+      .catch(err => {
+        toastr.options.timeOut = 800;
+        toastr.warning('Incorrect email/password')
+      });
 
   },
   signupUser(context, user) {
