@@ -8,6 +8,7 @@
             <li v-if="getSitesList !== undefined" v-for="site in getSitesList"> 
                 <h2 ref="siteName" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{site.siteName}}</h2>
                 <router-link class="small btn btn-info" :to="{name: 'editor',params: {id: site._id}}">edit</router-link>
+                <button class="small btn btn-danger" @click="deleteSite(site)">Delete</button>
             </li>
             <div class="create-new-site">
                 <h2>New Site</h2>

@@ -12,7 +12,7 @@ const state = {
 };
 
 const mutations = {
-  addSiteIdToCurrUser(state, id){
+  addSiteIdToCurrUser(state, id) {
     alert(id);
     state.siteIDs.push(id);
   },
@@ -33,15 +33,42 @@ const mutations = {
   },
   updateSitesList(state, list) {
     state.sitesList = list;
+  },
+  deleteSiteFromState(state, id) {
+    state.siteIDs = state.siteIDs.filter(siteId => siteId !== id);
+    state.sitesList = state.sitesList.filter(site => site._id !== id);
+    toastr.options.timeOut = 1200;
+    toastr.success('Deleted Successfully')
   }
 }
 
 const actions = {
+  deleteSite(context, site) {
+    console.log('site from action', site)
+    const userId = context.state.id;
+    const userSites = context.state.siteIDs.filter(siteId => siteId !== site._id);
+    const siteToDelete = site;
+
+    let data = {
+      userId,
+      userSites,
+      siteToDelete
+    }
+
+    data = JSON.stringify(data);
+
+    // need to delete both from sitesList and siteID's afterpositive response from sever
+    Vue.http.delete(`http://localhost:3003/deleteSite/${site._id}`)
+      .then(res => res.json())
+      .then(json => {
+        context.commit('deleteSiteFromState', site._id);
+      });
+  },
   getSitesList(context, sitesIds) {
     console.log('Gettongs sites list', context.state.siteIDs);
     Vue.http.post(`http://localhost:3003/data/sites/list`, context.state.siteIDs)
-            .then(res => res.json())
-            .then(json => console.log(context.commit('updateSitesList', json)));
+      .then(res => res.json())
+      .then(json => console.log(context.commit('updateSitesList', json)));
   },
   checkIfLoggedWithToken(context) {
     let tokenInLocalStorage = localStorage.getItem('loginToken');
