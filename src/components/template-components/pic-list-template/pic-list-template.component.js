@@ -1,3 +1,5 @@
+import { mapGetters } from 'vuex'
+
 export default {
   props: ['propsData', 'compIndex'],
   data: () => {
@@ -36,8 +38,23 @@ export default {
       this.$http.post('http://localhost:3003/upload', img)
         .then(res => res.json())
         .then(json => console.log(json))
+    },
+    saveCompProp(event) {
+      let htmlText = event.srcElement.innerHTML;
+      let refName = event.srcElement.getAttribute('tag-refname')
+      let compData = {
+          compIndex: this.compIndex,
+          htmlText,
+          refName
+      }
+      this.$store.dispatch('saveCompProp', compData);
     }
   },
   components: {
+  },
+  computed: {
+    ...mapGetters([
+      'getIsEditable'
+    ])
   }
 }

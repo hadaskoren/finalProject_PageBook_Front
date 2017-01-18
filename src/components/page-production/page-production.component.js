@@ -1,6 +1,5 @@
-import compList from '../comp-list';
-import editSiteNavbar from '../edit-site-navbar';
 import newSiteNavbar from '../new-site-navbar';
+import previewCompList from '../preview-comp-list';
 
 export default  {
   data: () => {
@@ -8,11 +7,15 @@ export default  {
     }
   },
   methods : {
-    
+    editableFalse() {
+      this.$store.dispatch('editableFalse');
+    }
   },
   components: {
-    compList,
-    editSiteNavbar,
-    newSiteNavbar
+    newSiteNavbar,
+    previewCompList
+  },
+  created() {
+    this.editableFalse();
   }
 }

@@ -1,5 +1,5 @@
 import Login from '../login';
-
+import mainNav from '../main-nav';
 
 export default  {
   data: () => {
@@ -11,6 +11,7 @@ export default  {
     
   },
   components: {
-    Login
+    Login,
+    mainNav
   }
 }

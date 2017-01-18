@@ -1,6 +1,6 @@
 import { mapGetters, mapMutations, mapAction } from 'vuex'
 import * as _ from '../../modules/user/user.module';
-
+import mainNav from '../main-nav';
 
 export default {
   data: () => {
@@ -30,5 +30,6 @@ export default {
     }
   },
   components: {
+    mainNav
   }
 }

@@ -15,11 +15,13 @@ export default  {
   },
   methods : {
     saveCompProp(event) {
-      var compData = {
-          event,
-          compIndex: this.compIndex
+      let htmlText = event.srcElement.innerHTML;
+      let refName = event.srcElement.getAttribute('tag-refname')
+      let compData = {
+          compIndex: this.compIndex,
+          htmlText,
+          refName
       }
-      console.log('Save Text!', event.srcElement.localName);
       this.$store.dispatch('saveCompProp', compData);
     }
   },
@@ -27,8 +29,8 @@ export default  {
   },
   computed: {
     ...mapGetters([
-      'getIsEditable',
+      'getIsEditable'
     ])
-  },
+  }
   
 }
