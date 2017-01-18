@@ -122,7 +122,7 @@ const getters = {
     getComps: (state) => { return state.comps },
     getIsEditable: (state) => { return state.isEditable},
     getCurrSiteId: (state) => {return state.id},
-    
+    getSiteName: (state) => {return state.siteName}
 };
 
 export default {
