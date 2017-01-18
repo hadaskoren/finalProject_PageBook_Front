@@ -15,6 +15,11 @@ export default {
     ])
   },
   methods: {
+    deleteSite(site) {
+      const isToDelete = confirm('Are you sure?')
+      if(isToDelete) this.$store.dispatch('deleteSite', site);
+      
+    }
     
   },
   components: {
