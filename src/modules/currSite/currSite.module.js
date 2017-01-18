@@ -101,18 +101,25 @@ const actions = {
     makeEditable({commit}) {
         commit(types.MAKE_EDITABLE);
     },
-    newSite({commit}) {
-        commit(types.MAKE_EDITABLE);
-    },
+    // newSite({commit}) {
+    //     commit(types.MAKE_EDITABLE);
+    // },
     newSite(context, site) {
         console.log('site',site);
-        Vue.http.post('http://localhost:3003/newsite', site)
+        const userInfo = {
+            id: context.getters.getCurrUserID,
+            sitesIds: context.getters.getSiteIds
+        }
+        console.log('useriddddsdsdsd', userInfo);
+        
+        Vue.http.post('http://localhost:3003/newsite', {site, userInfo})
             .then(res => res.json())
             .then(json => {
                 console.log('json',json);
                 toastr.options.timeOut = 1200;
                 toastr.success('Site '+ site.siteName+' was successfully created!');
                 context.commit('updateCurrSite',site);
+                context.commit('addSiteIdToCurrUser', json._id);
                 router.push(`/editor/site/${json._id}`);
             });  
     }

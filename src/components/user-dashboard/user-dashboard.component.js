@@ -26,6 +26,7 @@ export default {
     toastr.options.timeOut = 1200;
     //toastr.info('Welcome ' + this.$store.state.user.username);
     const sitesIds = JSON.stringify(this.$store.state.user.siteIDs);
+    this.$store.dispatch('getSitesList');
     
     // ~~~~~~ max stupid changes ~~~~~~
     
