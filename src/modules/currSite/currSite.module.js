@@ -10,12 +10,7 @@ const state = {
     url: '',
     isPublished: false,
     isEditable: false,
-    comps: [
-        JSON.parse(JSON.stringify(Interfaces['header-template'])),
-        JSON.parse(JSON.stringify(Interfaces['pic-text-template'])),
-        JSON.parse(JSON.stringify(Interfaces['icon-list-template'])),
-        JSON.parse(JSON.stringify(Interfaces['pic-list-template']))
-    ]
+    comps: []
 };
 
 const mutations = {

@@ -30,7 +30,10 @@ export default  {
   },
   created() {
     console.log('editor-getComps',this.getComps)
-    this.editSite(this.$route.params.id);
+    console.log('editor-getComps',this.getComps.length)
+    if (!this.getComps.length){
+      this.editSite(this.$route.params.id);
+    }
     this.makeEditable();
   }
 }
