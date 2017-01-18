@@ -4,6 +4,7 @@ import * as types from '../../mutation-types/mutation-types'
 import router from '../../routes';
 
 const state = {
+    sitesList: [],
     id: '',
     siteName: '',
     url: '',
@@ -53,6 +54,11 @@ const mutations = {
 }
 
 const actions = {
+    getSitesList(context, sitesIds) {
+        Vue.http.post(`http://localhost:3003/data/sites/list`, sitesIds)
+            .then(res => {console.log('ressss',res.body);this.sites=res.body})
+            .then(json => {console.log('ressss222',res); this.sites = json});
+    },
     getSite(context, siteId) {
         console.log(siteId);
         Vue.http.get(`http://localhost:3003/data/sites/${siteId}`)
