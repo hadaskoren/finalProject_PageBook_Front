@@ -10,6 +10,7 @@ import router from '../../routes';
 
 
 const state = {
+  sitesList: [],
   isLoggedIn: false,
   id: '',
   username: '',
@@ -22,7 +23,7 @@ const mutations = {
     state.id = user._id;
     state.username = user.username;
     state.siteIDs = user.siteIds;
-    console.log('22222',state.siteIDs);
+    console.log('22222', state.siteIDs);
     state.isLoggedIn = true;
     localStorage.setItem('loginToken', JSON.stringify(user.token));
     router.push(`/user-dashboard/${user.username}`);
@@ -32,19 +33,28 @@ const mutations = {
     state.isLoggedIn = false;
     localStorage.removeItem('loginToken');
     router.push('/home');
+  },
+  updateSitesList(state, list) {
+    state.sitesList = list;
   }
 
 }
 
 const actions = {
+  getSitesList(context, sitesIds) {
+    console.log('Gettongs sites list', context.state.siteIDs);
+    Vue.http.post(`http://localhost:3003/data/sites/list`, context.state.siteIDs)
+            .then(res => res.json())
+            .then(json => console.log(context.commit('updateSitesList', json)));
+  },
   checkIfLoggedWithToken(context) {
-    let tokenInLocalStorage =  localStorage.getItem('loginToken');
+    let tokenInLocalStorage = localStorage.getItem('loginToken');
     console.log(tokenInLocalStorage);
     if (tokenInLocalStorage) {
       console.log(123);
-      Vue.http.post('http://localhost:3003/token-login', {token: JSON.parse(tokenInLocalStorage)})
+      Vue.http.post('http://localhost:3003/token-login', { token: JSON.parse(tokenInLocalStorage) })
         .then(res => res.json())
-        .then(json => { console.log('json.user',json.user); context.commit('updateCurrUser', json.user) })
+        .then(json => { console.log('json.user', json.user); context.commit('updateCurrUser', json.user) })
     }
   },
   getUser(context, user) {
@@ -75,7 +85,10 @@ const actions = {
 };
 
 const getters = {
-  getCurrUserID: (state) => { return state.id }
+  getCurrUserID: (state) => { return state.id },
+  getCurrUser: (state) => { return state.username },
+  getSiteIds: (state) => { return state.siteIDs },
+  getSitesList: (state) => { return state.sitesList }
 };
 
 export default {

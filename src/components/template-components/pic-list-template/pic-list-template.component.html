@@ -11,7 +11,7 @@
 								<div class="hovereffect">
 									<!--<img :src="uploadedImg" />-->
 
-									<span class="image fit"><img :src="(uploadedImg1 ? uploadedImg1 : propsData.card_1_img_src)" alt=""></span>
+									<span class="image fit"><img :src="(uploadedImg1 ? uploadedImg1 : '/'+propsData.card_1_img_src)" alt=""></span>
 									<div class="overlay">
 										<input type="file" @change="onFileChange" id="upload" name="upload"  style="visibility: hidden; width: 1px; height: 1px" multiple/>
 										<a class="info" href="" onclick="document.getElementById('upload').click(); return false">Change Image</a>
@@ -27,7 +27,7 @@
 						<div class="4u 12u$(medium)">
 							<div class="uploadImage">
 								<div class="hovereffect">
-									<span class="image fit"><img :src="(uploadedImg2 ? uploadedImg2 : propsData.card_2_img_src)" alt=""></span>
+									<span class="image fit"><img :src="(uploadedImg2 ? uploadedImg2 : '/'+propsData.card_2_img_src)" alt=""></span>
 									<div class="overlay">
 										<input type="file" id="upload" name="upload" style="visibility: hidden; width: 1px; height: 1px" multiple/>
 										<a class="info" @change="onFileChange" href="" onclick="document.getElementById('upload').click(); return false">Upload Image</a>
@@ -43,7 +43,7 @@
 						<div class="4u 12u$(medium)">
 							<div class="uploadImage">
 								<div class="hovereffect">
-									<span class="image fit"><img :src="(uploadedImg3 ? uploadedImg3 : propsData.card_3_img_src)" alt=""></span>
+									<span class="image fit"><img :src="(uploadedImg3 ? uploadedImg3 : '/'+propsData.card_3_img_src)" alt=""></span>
 									<div class="overlay">
 										<input type="file" id="upload" name="upload" @change="onFileChange" style="visibility: hidden; width: 1px; height: 1px" multiple/>
 										<a class="info" href="" onclick="document.getElementById('upload').click(); return false">Upload Image</a>
