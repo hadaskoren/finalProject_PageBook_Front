@@ -21,6 +21,14 @@ export default  {
     }
   },
   computed: {
+    // getComps() {
+    //   get(){
+    //     return this.$store.state.comps;
+    //   }
+    //   set(value){
+    //     this.$store.commit('updateComps', value);
+    //   }
+    // }
     ...mapGetters([
       'getComps',
     ])
@@ -70,5 +78,6 @@ export default  {
   },
   created() {
     this.updateCompsOptions();
+    console.log('list - comps list', this.getComps)
   }
 }

@@ -2,12 +2,6 @@ import Vue from 'vue';
 import VueResource from 'vue-resource';
 import VueRouter from 'vue-router';
 import router from '../../routes';
-// import {router} from 'vue-router';
-
-// Vue.use(VueRouter);
-
-
-
 
 const state = {
   sitesList: [],
@@ -31,7 +25,6 @@ const mutations = {
     state.isLoggedIn = true;
     localStorage.setItem('loginToken', JSON.stringify(user.token));
     router.push(`/user-dashboard/${user.username}`);
-
   },
   logout(state) {
     state.isLoggedIn = false;
@@ -41,7 +34,6 @@ const mutations = {
   updateSitesList(state, list) {
     state.sitesList = list;
   }
-
 }
 
 const actions = {

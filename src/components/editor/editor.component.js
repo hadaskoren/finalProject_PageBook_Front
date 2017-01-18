@@ -21,10 +21,16 @@ export default  {
     compList,
     editSiteNavbar,
     newSiteNavbar,
-    mainNav
+    mainNav,
+  },
+  computed: {
+    ...mapGetters([
+      'getComps',
+    ]),
   },
   created() {
+    console.log('editor-getComps',this.getComps)
     this.editSite(this.$route.params.id);
     this.makeEditable();
-  },
+  }
 }
