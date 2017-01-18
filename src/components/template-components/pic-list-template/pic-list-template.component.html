@@ -11,7 +11,7 @@
 								<div class="hovereffect">
 									<!--<img :src="uploadedImg" />-->
 
-									<span class="image fit"><img :src="(uploadedImg1 ? uploadedImg1 : propsData.card_1_img_src)" alt=""></span>
+									<span class="image fit"><img :src="(uploadedImg1 ? uploadedImg1 : '/'+propsData.card_1_img_src)" alt=""></span>
 									<div class="overlay">
 										<input type="file" @change="onFileChange" id="upload" name="upload"  style="visibility: hidden; width: 1px; height: 1px" multiple/>
 										<a class="info" href="" onclick="document.getElementById('upload').click(); return false">Change Image</a>
