@@ -13,5 +13,8 @@ export default  {
     mainNav,
     editor,
     pagePreview
+  },
+  created() {
+    this.$store.dispatch('checkIfLoggedWithToken');
   }
 }
