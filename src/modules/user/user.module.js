@@ -18,6 +18,10 @@ const state = {
 };
 
 const mutations = {
+  addSiteIdToCurrUser(state, id){
+    alert(id);
+    state.siteIDs.push(id);
+  },
   updateCurrUser(state, user) {
     console.log('updating useererr');
     state.id = user._id;
