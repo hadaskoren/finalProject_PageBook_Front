@@ -54,7 +54,6 @@ app.use(clientSessions({
 }));
 
 const http = require('http').Server(app);
-const io = require('socket.io')(http);
 
 function dbConnect() {
 
