@@ -12,8 +12,8 @@ import NewSite from './components/new-site-form';
 
 const routes = [{
   path: '/',
-  name: 'site-center',
-  component: SiteCenter
+  name: 'home',
+  component: Home
 },
 {
   path: '/user-dashboard/:id',
