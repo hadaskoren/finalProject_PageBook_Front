@@ -15,9 +15,8 @@ const multer = require('multer')
 
 var port = process.env.PORT || 3003;
 //var mongoUrl = (process.env.PORT ? 'mongodb://localhost:27017/page_book' : 'mongodb://shmixadmin:misterbit@ds117189.mlab.com:17189/page_book');
-var mongoUrl = (process.env.PORT ? 'mongodb://shmixadmin:misterbit@ds117189.mlab.com:17189/page_book' : 'mongodb://localhost:27017/page_book');
+var mongoUrl = 'mongodb://shmixadmin:misterbit@ds117189.mlab.com:17189/page_book';
 
-console.log('mongoUrl', mongoUrl);
 
 // Configure where uploaded files are going
 const uploadFolder = '/uploads';
@@ -305,10 +304,7 @@ app.post('/newSite', function (req, res) {
 			} else {
 				cl('result', result.ops[0]);
 				cl('site' + " added");
-
-				let wantedId = (result._id ? result._id : result.ops[0]._id);
-
-				updateUserSitesIds(wantedId, req.body.userInfo, userCollection);
+				updateUserSitesIds(result.ops[0]._id, req.body.userInfo, userCollection);
 
 
 				res.json(result.ops[0]);
