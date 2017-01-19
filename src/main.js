@@ -10,6 +10,7 @@ import store from './store';
 import SiteCenter from './components/site-center';
 // import Editor from './components/editor';
 
+Vue.http.options.root = process.env.NODE_ENV === 'development' ? 'http://localhost:3003' : '';
 
 const app = new Vue({
   router,

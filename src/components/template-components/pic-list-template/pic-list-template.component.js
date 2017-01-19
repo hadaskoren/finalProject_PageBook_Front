@@ -35,7 +35,7 @@ export default {
     },
     sendToServer(img) {
       console.log('sendToServer');
-      this.$http.post('http://localhost:3003/upload', img)
+      this.$http.post('upload', img)
         .then(res => res.json())
         .then(json => console.log(json))
     },
