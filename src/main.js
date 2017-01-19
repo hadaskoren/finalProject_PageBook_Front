@@ -2,13 +2,12 @@ import './style.scss';
 import './vendor';
 import './vue-plugins';
 
-
 import Vue from 'vue';
+import Vuetify from 'vuetify'
 import router from './routes';
 import store from './store';
-// import MainNav from './components/main-nav';
 import SiteCenter from './components/site-center';
-// import Editor from './components/editor';
+Vue.use(Vuetify)
 
 Vue.http.options.root = process.env.NODE_ENV === 'development' ? 'http://localhost:3003' : '';
 
