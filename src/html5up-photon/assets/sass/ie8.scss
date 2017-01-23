@@ -162,8 +162,8 @@
 		input[type="button"],
 		button,
 		.button {
-			border: solid 1px $ie-palette-dark-border !important;
-			color: $ie-palette-dark-fg-bold !important;
+			border: solid 1px $ie-palette-dark-border;
+			color: $ie-palette-dark-fg-bold;
 
 			&:hover {
 				background-color: $ie-palette-dark-border-bg;
@@ -175,12 +175,12 @@
 
 			&.special {
 				background-color: $ie-palette-dark-fg-bold;
-				border: solid 1px $ie-palette-dark-border !important;
-				color: $ie-palette-this-bg !important;
+				border: solid 1px $ie-palette-dark-border;
+				color: $ie-palette-this-bg;
 
 				&:hover {
 					background-color: $ie-palette-dark-border-bg !important;
-					color: $ie-palette-dark-fg-bold !important;
+					color: $ie-palette-dark-fg-bold;
 				}
 
 				&:active {

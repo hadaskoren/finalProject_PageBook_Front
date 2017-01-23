@@ -782,7 +782,7 @@
 		border-radius: _size(border-radius);
 		border: 0;
 		box-shadow: inset 0 0 0 1px _palette(border);
-		color: _palette(fg-bold) !important;
+		color: _palette(fg-bold);
 		cursor: pointer;
 		display: inline-block;
 		font-size: 0.9em;
@@ -830,7 +830,7 @@
 		&.special {
 			background-color: _palette(fg-bold);
 			box-shadow: none !important;
-			color: _palette(bg) !important;
+			color: _palette(bg);
 
 			&:hover {
 				background-color: lighten(_palette(fg-bold), 5);
@@ -884,7 +884,7 @@
 		button,
 		.button {
 			box-shadow: inset 0 0 0 1px _palette(dark, border);
-			color: _palette(dark, fg-bold) !important;
+			color: _palette(dark, fg-bold);
 
 			&:hover {
 				background-color: _palette(dark, border-bg);
@@ -901,7 +901,7 @@
 
 				&:hover {
 					background-color: _palette(dark, border-bg) !important;
-					color: _palette(dark, fg-bold) !important;
+					color: _palette(dark, fg-bold);
 				}
 
 				&:active {

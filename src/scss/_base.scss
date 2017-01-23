@@ -7,12 +7,33 @@
 }
 
 html {
+  height: 100%;
   color: var(--main-color);
   font-family: var(--primary-font);
   font-size: 16px;
   @include for-mobile-only {
     font-size: 14px;
   }
+}
+
+body {
+  height: 100%;
+}
+
+.bgCover {
+    background: url('./assets/img/bg.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100%;
+    &.user-dashboard {
+      background: white;
+      background-image: url('./assets/img/bright-squares.png');
+    }
+    &.login {
+      background: white;
+      background-image: url('./assets/img/gplay.png');
+    }
 }
 
 a {

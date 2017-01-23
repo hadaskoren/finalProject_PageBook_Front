@@ -1,29 +1,30 @@
-<div>
-    <main-nav></main-nav>
-    <section class="login-component">
+<section class="login">
+    <div class="header">
+        <ul class="clean-list flex space-between">
+            <li>
+                <router-link to="/home"><h1>SHMIX</h1></router-link>
+            </li>
+        </ul>
+    </div>
+    <div class="main-wrapper">
         
-        <!--<h1>Login Page</h1>-->
-        <!--username: {{username}}-->
-        <br>
-        <!--password: {{password}}-->
         <template v-if="isToLogin">
+            <h1>Log In</h1>
             <input type="text" v-model="username" placeholder="username" @keyup.enter="login">
             <input type="password" v-model="password" placeholder="password" @keyup.enter="login">
-            <button @click="login">login</button>
+            <button class="btn" @click="login">login</button>
             <div class="signup-suggest">
-                <p class="para">New to Page Book? <a href="" @click.prevent="isToLogin = false">Signup</a> </p>            
+                <p class="para">New to SHMIX? <a href="" @click.prevent="isToLogin = false"><span class="signup">Sign Up</span></a> </p>            
             </div>
         </template>
         <template v-else>
+            <h1>Sign Up</h1>
             <input type="text" v-model="username" placeholder="username" @keyup.enter="signup">
             <input type="password" v-model="password" placeholder="password" @keyup.enter="signup">
             <button @click="signup">Signup</button>
             <div class="signup-suggest">
-                <p class="para">Already have a Page Book account? <a href="" @click.prevent="isToLogin = true">Login</a></p>            
+                <p class="para">Already have a SHMIX account? <a href="" @click.prevent="isToLogin = true"><span class="signup">Login</span></a></p>            
             </div>
         </template>
-
-        
-        
-    </section>
-</div>
+    </div>
+</section>

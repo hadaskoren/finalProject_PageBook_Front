@@ -1,6 +1,7 @@
-.login-component{
-    width: 300px;
-    margin: 20px auto;
+.login{
+
+    // width: 300px;
+    // margin: 20px auto;
     input {
         width: 300px;
         margin-bottom: 20px;
@@ -18,3 +19,34 @@
     }
 }
 
+.main-wrapper {
+    max-width: 300px;
+    margin-top: 10em;
+    margin: 0 auto;
+    padding-top: 6em;
+}
+
+h1{
+  background: url(http://apod.nasa.gov/apod/image/0603/coma_misti.jpg) -80px -80px;
+  color: red;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: bold;
+  font-size: 30px;
+  font-family: arial, helvetica;
+  text-align: center; 
+}
+
+li{
+    margin: 0 auto;
+}
+
+.signup {
+    color: #458fef;
+}
+
+.header {
+    float: left;
+    margin-left: 2em;
+    margin-top: 2em;
+}

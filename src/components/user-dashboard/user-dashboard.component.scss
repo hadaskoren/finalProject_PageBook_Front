@@ -1,22 +1,43 @@
+.sites-list {
+    margin-top: 3em;
+}
+
 .sites-list li {
     width: 200px;
     padding: 20px;
-    border: 1px solid hotpink;
+    border: 1px solid var(--main-color);
     border-radius: 10px;
     text-align: center;
     display: inline-block;
     cursor: pointer;
     margin: 10px;
+    background: white;
 }
 
 .create-new-site {
     width: 200px;
-    padding: 20px;
-    border: 1px solid hotpink;
-    border: dashed 1px #000;
+    padding: 41px 20px 20px 20px;
+    border: 1px dashed black;
     border-radius: 10px;
     text-align: center;
     display: inline-block;
     cursor: pointer;
     margin: 10px;
+    background-color: white;
+    h2 {
+        padding-bottom: 0.8em;
+    }
+}
+
+.delete {
+    float: right;
+}
+
+.fa-plus-circle {
+    font-size: 3rem;
+    padding-bottom: 5.4px;
+}
+
+.addSite {
+    
 }
