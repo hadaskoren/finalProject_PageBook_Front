@@ -8,8 +8,6 @@ export default {
       username: '',
       password: '',
       isToLogin: true
-
-
     }
   },
   methods: {

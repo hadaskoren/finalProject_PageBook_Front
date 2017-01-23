@@ -10,7 +10,6 @@ export default  {
   methods : {
     logout() {
         this.$store.dispatch('logout');
-        // router.push(`/home`);
     }
   },
   computed: {

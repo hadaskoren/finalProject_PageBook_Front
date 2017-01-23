@@ -1,6 +1,7 @@
 import mainNav from '../main-nav';
 import { Interfaces } from '../../interfaces/interfaces';
 
+
 export default {
     data: () => {
         return {

@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import mainNav from '../main-nav';
-import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex';
+import newSiteForm from '../new-site-form';
 import router from '../../routes';
-
 
 export default {
   data: () => {
@@ -25,7 +25,8 @@ export default {
     
   },
   components: {
-    mainNav
+    mainNav,
+    newSiteForm
   },
   created() {
     // if (!this.$store.state.user.isLoggedIn) {

@@ -1,35 +1,36 @@
-<nav class="nav">
-  <div class="flex space-between">
+<nav>
+  <div class="nav flex space-between">
     <div class="nav-left">
-      <router-link to="/home" tag="a" active-class="active">
-        <a class="nav-item is-brand" href="#">
-          <h1>Page Book</h1>
-        </a>
-      </router-link>
-      
+      <ul class="clean-list flex space-between">
+        <li>
+          <router-link to="/home"><h1>SHMIX</h1></router-link>
+        </li>
+      </ul>
     </div>
 
+
     <div class="nav-center">
-      <!--<router-link to="/editor" tag="a" active-class="active">
-          <a class="nav-item">Home</a>
-      </router-link>-->
-      <!--<router-link to="/editor" tag="a" active-class="active">
-          <a class="nav-item">About</a>
-      </router-link>-->
-      <!--<router-link to="/editor" tag="a" active-class="active">
-          <a class="nav-item">Contact</a>
-      </router-link>-->
-      <router-link v-if="isLoggedIn" to="/user-dashboard/getCurrUserID" tag="a" active-class="active">
-          <a class="nav-item">Your Sites</a>
-      </router-link>
+      <div class="nav-center-list-items">
+        <ul class="clean-list flex">
+          <li class="list-item">
+            <router-link to="/home">Home</router-link>
+          </li>
+          <li class="list-item">
+            <router-link to="/user-dashboard/getCurrUserID">My Sites</router-link>
+          </li>
+        </ul>
+      </div>
     </div>
+
+
     <div class="nav-right">
-      <router-link v-if="!isLoggedIn" to="/login" tag="a" active-class="active">
-          <a class="nav-item">Login</a>
-      </router-link>
-      <!--<router-link v-else to="/editor" tag="a" active-class="active">-->
-          <a v-else class="nav-item" @click="logout">Logout</a>
-      <!--</router-link>-->
+      <ul class="clean-list">
+        <li>
+          <router-link v-if="!isLoggedIn" to="/login"><button class="login-logout-btn btn">Login</button></router-link>
+          <router-link v-else to="/home"><button class="login-logout-btn btn" @click="logout">Logout</button></router-link>
+        </li>
+      </ul>
     </div>
   </div>
-</nav>
+
+

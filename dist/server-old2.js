@@ -13,6 +13,11 @@ const express = require('express'),
 const clientSessions = require("client-sessions");
 const multer = require('multer')
 
+var port = process.env.PORT || 3003;
+//var mongoUrl = (process.env.PORT ? 'mongodb://localhost:27017/page_book' : 'mongodb://shmixadmin:misterbit@ds117189.mlab.com:17189/page_book');
+var mongoUrl = 'mongodb://shmixadmin:misterbit@ds117189.mlab.com:17189/page_book';
+
+
 // Configure where uploaded files are going
 const uploadFolder = '/uploads';
 var storage = multer.diskStorage({
@@ -50,15 +55,13 @@ app.use(clientSessions({
 }));
 
 const http = require('http').Server(app);
-const io = require('socket.io')(http);
 
 function dbConnect() {
 
 	return new Promise((resolve, reject) => {
 		// Connection URL
-		var url = 'mongodb://localhost:27017/page_book';
 		// Use connect method to connect to the Server
-		mongodb.MongoClient.connect(url, function (err, db) {
+		mongodb.MongoClient.connect(mongoUrl, function (err, db) {
 			if (err) {
 				cl('Cannot connect to DB', err)
 				reject(err);
@@ -126,35 +129,35 @@ app.post('/data/sites/list', function (req, res) {
 
 
 // GETs a single
-// app.get('/data/:objType/:id', function (req, res) {
-// 	const objType = req.params.objType;
-// 	const objId = req.params.id;
-// 	console.log('');
-// 	cl(`Getting you an ${objType} with id: ${objId}`);
-// 	dbConnect()
-// 		.then((db) => {
-// 			const collection = db.collection(objType);
-// 			//let _id;
-// 			//try {
-// 			let _id = new mongodb.ObjectID(objId);
-// 			//}
-// 			//catch (e) {
-// 			//	console.log('ERROR', e);
-// 			//	return Promise.reject(e);
-// 			//}
+app.get('/data/:objType/:id', function (req, res) {
+	const objType = req.params.objType;
+	const objId = req.params.id;
+	console.log('');
+	cl(`Getting you an ${objType} with id: ${objId}`);
+	dbConnect()
+		.then((db) => {
+			const collection = db.collection(objType);
+			//let _id;
+			//try {
+			let _id = new mongodb.ObjectID(objId);
+			//}
+			//catch (e) {
+			//	console.log('ERROR', e);
+			//	return Promise.reject(e);
+			//}
 
-// 			collection.find({ _id: _id }).toArray((err, objs) => {
-// 				if (err) {
-// 					cl('Cannot get you that ', err)
-// 					res.json(404, { error: 'not found' })
-// 				} else {
-// 					cl("Returning a single " + objType);
-// 					res.json(objs[0]);
-// 				}
-// 				db.close();
-// 			});
-// 		});
-// });
+			collection.find({ _id: _id }).toArray((err, objs) => {
+				if (err) {
+					cl('Cannot get you that ', err)
+					res.json(404, { error: 'not found' })
+				} else {
+					cl("Returning a single " + objType);
+					res.json(objs[0]);
+				}
+				db.close();
+			});
+		});
+});
 
 // DELETE
 app.delete('/deleteSite/:id', function (req, res) {

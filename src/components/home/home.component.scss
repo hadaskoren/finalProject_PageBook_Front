@@ -1,13 +1,12 @@
-.home-component {
-    text-align: center;
-    position: relative;
+.bold{
+    font-weight: bold;
 }
 
-.semi-colon {
-    font-size: 20px;
-    position: relative;
-    top: 1px;
-    color: #333;
+h1 {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+    font-size: 3rem;
+    color: var(--main-color);
 }
 
 .show-login-active{
@@ -16,6 +15,10 @@
     }
 }
 
-.sign-up-button {
-    font-size: 12px;
+.startNow {
+    border: 1px solid #c8c8c8 ;
+    color: #c8c8c8  !important;
+    margin-top: 1em;
 }
+
+

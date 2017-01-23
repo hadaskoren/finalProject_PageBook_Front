@@ -2,10 +2,36 @@
   list-style: none;
 }
 
-.flex{
+.fullHeight {
+  height: 100%;
+}
+
+a {
+  border: none;
+  cursor: pointer;
+}
+/*----------  Flex Helpers  ----------*/
+
+.flex {
   display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .space-between {
   justify-content: space-between;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.full-height {
+  height: 100%;
 }
