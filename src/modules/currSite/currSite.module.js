@@ -10,10 +10,24 @@ const state = {
     url: '',
     isPublished: false,
     isEditable: false,
-    comps: []
+    comps: [],
+    flag: true
 };
 
 const mutations = {
+    swapComps(state, compsToSwap) {
+        state.flag = !state.flag;
+        const index1 = compsToSwap.first;
+        const index2 = compsToSwap.second
+        console.log(index1, index2);
+        console.log(state.comps)
+        
+        let comp1 = state.comps[index1];
+        let comp2 = state.comps[index2];
+        state.comps[index1] = comp2;
+        state.comps[index2] = comp1;
+
+    },
     updateCurrSite(state, site) {
         state.id = site._id;
         state.isPublished = site.isPublished;
@@ -25,7 +39,6 @@ const mutations = {
         
     },
     [types.ADD_COMP](state, compSelectedInterface) {
-        console.log('state.comps', state.comps);
         state.comps.splice(compSelectedInterface.idx, 0, compSelectedInterface)
     },
     [types.SHOW_COMP_ADD_BTNS](state, comp) {
@@ -36,22 +49,18 @@ const mutations = {
     },
     [types.SAVE_PROP_TEXT](state, compData) {
         state.comps[compData.compIndex].props[compData.refName] = compData.htmlText;
-        console.log('state.comps',state.comps);
     },
     [types.EDITABLE_FALSE](state) {
         state.isEditable = false;
-        console.log('state.isEditable = false',state.isEditable);
     },
     [types.MAKE_EDITABLE](state) {
         state.isEditable = true;
-        console.log('state.isEditable = true',state.isEditable);
     }
 }
 
 const actions = {
    
     getSite(context, siteId) {
-        console.log(siteId);
         Vue.http.get(`data/sites/${siteId}`)
             .then(res => res.json())
             .then(json => { context.commit('updateCurrSite', json) })
@@ -65,7 +74,6 @@ const actions = {
             url: context.state.url,
             comps: context.state.comps
         }
-        console.log('siteToSave', siteToSave);
         Vue.http.put(`data/sites/${context.state.id}`, siteToSave)
             .then(res => res.json())
             .then(json => {
@@ -91,7 +99,6 @@ const actions = {
         context.commit(types.SHOW_COMP_ADD_BTNS, currComp);
     },
     saveCompProp({commit}, compData) {
-        console.log('In action');
         commit(types.SAVE_PROP_TEXT,compData);
     },
     editableFalse({commit}) {
@@ -121,7 +128,7 @@ const actions = {
 };
 
 const getters = {
-    getComps: (state) => { return state.comps },
+    getComps: (state) => { console.log(state.flag); return state.comps },
     getIsEditable: (state) => { return state.isEditable},
     getCurrSiteId: (state) => {return state.id},
     getSiteName: (state) => {return state.siteName}

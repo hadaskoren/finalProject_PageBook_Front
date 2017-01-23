@@ -11,7 +11,7 @@ import NewSite from './components/new-site-form';
 
 const routes = [{
   path: '/',
-  name: 'home',
+  // name: 'home',
   component: Home
 },
 {

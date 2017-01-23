@@ -17,7 +17,8 @@ export default  {
           return this.$store.state.user.isLoggedIn;
       },
       ...mapGetters([
-         'getCurrUserID'
+         'getCurrUserID',
+         'isLoggedIn'
       ]),
   },
   components: {

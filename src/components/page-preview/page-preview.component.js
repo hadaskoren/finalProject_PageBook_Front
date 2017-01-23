@@ -19,7 +19,6 @@ export default  {
     mainNav
   },
   created() {
-    console.log('getComps',this.getComps)
     this.editableFalse();
   },
   computed: {
