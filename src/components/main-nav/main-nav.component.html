@@ -1,22 +1,25 @@
 <nav class="nav">
   <div class="flex space-between">
     <div class="nav-left">
-      <a class="nav-item is-brand" href="#">
-        <h1>Page Book</h1>
-      </a>
+      <router-link to="/home" tag="a" active-class="active">
+        <a class="nav-item is-brand" href="#">
+          <h1>Page Book</h1>
+        </a>
+      </router-link>
+      
     </div>
 
     <div class="nav-center">
-      <router-link to="/editor" tag="a" active-class="active">
+      <!--<router-link to="/editor" tag="a" active-class="active">
           <a class="nav-item">Home</a>
-      </router-link>
-      <router-link to="/editor" tag="a" active-class="active">
+      </router-link>-->
+      <!--<router-link to="/editor" tag="a" active-class="active">
           <a class="nav-item">About</a>
-      </router-link>
-      <router-link to="/editor" tag="a" active-class="active">
+      </router-link>-->
+      <!--<router-link to="/editor" tag="a" active-class="active">
           <a class="nav-item">Contact</a>
-      </router-link>
-        <router-link to="/user-dashboard/getCurrUserID" tag="a" active-class="active">
+      </router-link>-->
+      <router-link v-if="isLoggedIn" to="/user-dashboard/getCurrUserID" tag="a" active-class="active">
           <a class="nav-item">Your Sites</a>
       </router-link>
     </div>

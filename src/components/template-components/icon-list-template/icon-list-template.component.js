@@ -15,7 +15,6 @@ export default  {
           htmlText,
           refName
       }
-      console.log('compData',compData);
       this.$store.dispatch('saveCompProp', compData);
     }
   },
