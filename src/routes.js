@@ -1,6 +1,5 @@
 import VueRouter from 'vue-router';
 
-import SiteCenter from './components/site-center';
 import Editor from './components/editor';
 import Preview from './components/page-preview';
 import Production from './components/page-production';
