@@ -30,3 +30,25 @@ p {
 .firstAddBtn {
     margin: 1em;
 }
+
+.list-group-item {
+    border: 3px dashed orangered;
+    transition: all 0.5s;   
+}
+
+.list-group {
+    transition: all 0.5s; 
+}
+
+.list-group-small {
+    transition: all 0.5s; 
+    /*background: red;*/
+    margin: 50px auto;
+    height: 200px;
+    width: 600px;
+    overflow: hidden;
+}
+
+.drag-over {
+    border: 5px solid red;
+}
