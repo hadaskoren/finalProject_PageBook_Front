@@ -13,17 +13,16 @@ const state = {
 
 const mutations = {
   addSiteIdToCurrUser(state, id) {
-    alert(id);
     state.siteIDs.push(id);
   },
   updateCurrUser(state, user) {
-    console.log('updating useererr');
     state.id = user._id;
     state.username = user.username;
     state.siteIDs = user.siteIds;
-    console.log('22222', state.siteIDs);
     state.isLoggedIn = true;
     localStorage.setItem('loginToken', JSON.stringify(user.token));
+    toastr.options.timeOut = 1200;
+    toastr.info('Welcome ' + user.username);
     router.push(`/user-dashboard/${user.username}`);
   },
   logout(state) {
@@ -44,7 +43,6 @@ const mutations = {
 
 const actions = {
   deleteSite(context, site) {
-    console.log('site from action', site)
     const userId = context.state.id;
     const userSites = context.state.siteIDs.filter(siteId => siteId !== site._id);
     const siteToDelete = site;
@@ -57,33 +55,31 @@ const actions = {
 
     data = JSON.stringify(data);
 
-    // need to delete both from sitesList and siteID's afterpositive response from sever
     Vue.http.delete(`deleteSite/${site._id}`)
       .then(res => res.json())
       .then(json => {
         context.commit('deleteSiteFromState', site._id);
       });
   },
-  getSitesList(context, sitesIds) {
-    console.log('Gettongs sites list', context.state.siteIDs);
+  getSitesList(context) {
+    if(!context.state.siteIDs.length) return;
     Vue.http.post(`data/sites/list`, context.state.siteIDs)
       .then(res => res.json())
-      .then(json => console.log(context.commit('updateSitesList', json)));
+      .then(json => context.commit('updateSitesList', json))
+      .catch(err => console.log('Couldn\'t get sites'));
   },
   checkIfLoggedWithToken(context) {
     let tokenInLocalStorage = localStorage.getItem('loginToken');
-    console.log(tokenInLocalStorage);
     if (tokenInLocalStorage) {
-      console.log(123);
       Vue.http.post('token-login', { token: JSON.parse(tokenInLocalStorage) })
         .then(res => res.json())
-        .then(json => { console.log('json.user', json.user); context.commit('updateCurrUser', json.user) })
+        .then(json => context.commit('updateCurrUser', json.user));
     }
   },
   getUser(context, user) {
     Vue.http.post('login', user)
       .then(res => res.json())
-      .then(json => { console.log(json); context.commit('updateCurrUser', json) })
+      .then(json => context.commit('updateCurrUser', json))
       .catch(err => {
         toastr.options.timeOut = 800;
         toastr.warning('Incorrect email/password')
@@ -100,10 +96,9 @@ const actions = {
       });
   },
   saveNewUser(context, userData) {
-    // console.log(userData);
     Vue.http.post('signup', userData)
       .then(res => res.json())
-      .then(json => console.log(json));
+      // .then(json => console.log(json));
   },
   logout(context) {
     context.commit('logout');
@@ -115,7 +110,8 @@ const getters = {
   getCurrUserID: (state) => { return state.id },
   getCurrUser: (state) => { return state.username },
   getSiteIds: (state) => { return state.siteIDs },
-  getSitesList: (state) => { return state.sitesList }
+  getSitesList: (state) => { return state.sitesList },
+  isLoggedIn: (state) => { return state.isLoggedIn}
 };
 
 export default {

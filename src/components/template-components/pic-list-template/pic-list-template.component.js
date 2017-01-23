@@ -13,8 +13,9 @@ export default {
   },
   methods: {
     onFileChange(e) {
-      console.log('onfilechange');
+      console.log('onFileChange')
       var files = e.target.files || e.dataTransfer.files;
+      console.log(files);
       if (!files.length)
         return;
       this.createImage(files[0]);
@@ -27,14 +28,12 @@ export default {
         this.uploadedImg1 = e.target.result;
         this.sendToServer(this.uploadedImg1);
       };
-      console.log('uploadedImg1',this.uploadedImg1);
       reader.readAsDataURL(file);
-      console.log('this.uploadedImg1',this.uploadedImg1);
 
       
     },
     sendToServer(img) {
-      console.log('sendToServer');
+      // console.log('sendToServer Image', img)
       this.$http.post('upload', img)
         .then(res => res.json())
         .then(json => console.log(json))
