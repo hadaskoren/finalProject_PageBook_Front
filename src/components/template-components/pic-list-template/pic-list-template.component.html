@@ -1,64 +1,60 @@
 <div>
-  <section id="three" class="main style1 special">
-	  {{uploadedImg1}}
-	  {{uploadedImg2}}
-				<div class="container">
-					<header class="major">
-						<h2 tag-refName="h2_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.h2_text"></h2>
-					</header>
-					<p tag-refName="p_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.p_text"></p>
-					<div class="row 150%">
-						<div class="4u 12u$(medium)">
-							<div class="uploadImage">
-								<div class="hovereffect">
-									<!--<img :src="uploadedImg" />-->
-
-									<span class="image fit"><img :src="(uploadedImg1 ? uploadedImg1 : '/'+propsData.card_1_img_src)" alt=""></span>
-									<div class="overlay">
-										<input type="file" @change="onFileChange" id="upload" name="upload"  style="visibility: hidden; width: 1px; height: 1px" multiple/>
-										<a class="info" href="" onclick="document.getElementById('upload').click(); return false">Change Image</a>
-									</div>
-								</div>
+  	<section id="three" class="main style1 special">
+		<div class="container">
+			<header class="major">
+				<h2 tag-refName="h2_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.h2_text"></h2>
+			</header>
+			<p tag-refName="p_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.p_text"></p>
+			<div class="row 150%">
+				<div class="4u 12u$(medium)">
+					<div class="uploadImage">
+						<div class="hovereffect">
+							<span class="image fit"><img :src="(uploadedImg1 ? uploadedImg1 : '/'+propsData.card_1_img_src)" alt=""></span>
+							<div class="overlay">
+								<input type="file" @change="onFileChange($event,1)" id="upload" name="upload"  style="visibility: hidden; width: 1px; height: 1px" multiple/>
+								<a class="info" href="" onclick="document.getElementById('upload').click(); return false">Change Image</a>
 							</div>
-							<h3 tag-refName="card_1_h3_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.card_1_h3_text"></h3>
-							<p tag-refName="card_1_p_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.card_1_p_text"></p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</div>
-						<div class="4u 12u$(medium)">
-							<div class="uploadImage">
-								<div class="hovereffect">
-									<span class="image fit"><img :src="(uploadedImg2 ? uploadedImg2 : '/'+propsData.card_2_img_src)" alt=""></span>
-									<div class="overlay">
-										<input type="file" id="upload" name="upload" style="visibility: hidden; width: 1px; height: 1px" multiple/>
-										<a class="info" @change="onFileChange" href="" onclick="document.getElementById('upload').click(); return false">Change Image</a>
-									</div>
-								</div>
-							</div>
-							<h3 tag-refName="card_2_h3_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.card_2_h3_text"></h3>
-							<p tag-refName="card_2_p_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.card_2_p_text"></p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</div>
-						<div class="4u 12u$(medium)">
-							<div class="uploadImage">
-								<div class="hovereffect">
-									<span class="image fit"><img :src="(uploadedImg3 ? uploadedImg3 : '/'+propsData.card_3_img_src)" alt=""></span>
-									<div class="overlay">
-										<input type="file" id="upload" name="upload" @change="onFileChange" style="visibility: hidden; width: 1px; height: 1px" multiple/>
-										<a class="info" href="" onclick="document.getElementById('upload').click(); return false">Change Image</a>
-									</div>
-								</div>
-							</div>
-							<h3 tag-refName="card_3_h3_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.card_3_h3_text"></h3>
-							<p tag-refName="card_3_p_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.card_3_p_text"></p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
 						</div>
 					</div>
+					<h3 tag-refName="card_1_h3_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.card_1_h3_text"></h3>
+					<p tag-refName="card_1_p_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.card_1_p_text"></p>
+					<ul class="actions">
+						<li><a href="#" class="button">More</a></li>
+					</ul>
 				</div>
-  </section>
+				<div class="4u 12u$(medium)">
+					<div class="uploadImage">
+						<div class="hovereffect">
+							<span class="image fit"><img :src="(uploadedImg2 ? uploadedImg2 : '/'+propsData.card_2_img_src)" alt=""></span>
+							<div class="overlay">
+								<input type="file" @change="onFileChange($event,2)" id="upload2" name="upload2"  style="visibility: hidden; width: 1px; height: 1px" multiple/>
+								<a class="info" href="" onclick="document.getElementById('upload2').click(); return false">Change Image</a>
+							</div>
+						</div>
+					</div>
+					<h3 tag-refName="card_2_h3_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.card_2_h3_text"></h3>
+					<p tag-refName="card_2_p_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.card_2_p_text"></p>
+					<ul class="actions">
+						<li><a href="#" class="button">More</a></li>
+					</ul>
+				</div>
+				<div class="4u 12u$(medium)">
+					<div class="uploadImage">
+						<div class="hovereffect">
+							<span class="image fit"><img :src="(uploadedImg3 ? uploadedImg3 : '/'+propsData.card_3_img_src)" alt=""></span>
+							<div class="overlay">
+								<input type="file" @change="onFileChange($event,3)" id="upload3" name="upload3"  style="visibility: hidden; width: 1px; height: 1px" multiple/>
+								<a class="info" href="" onclick="document.getElementById('upload3').click(); return false">Change Image</a>
+							</div>
+						</div>
+					</div>
+					<h3 tag-refName="card_3_h3_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.card_3_h3_text"></h3>
+					<p tag-refName="card_3_p_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.card_3_p_text"></p>
+					<ul class="actions">
+						<li><a href="#" class="button">More</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+  	</section>
 </div>

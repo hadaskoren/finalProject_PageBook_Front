@@ -7,11 +7,10 @@ import Login from './components/login';
 import Home from './components/home';
 import UserDashboard from './components/user-dashboard';
 import Signup from './components/signup';
-import NewSite from './components/new-site-form';
 
 const routes = [{
   path: '/',
-  // name: 'home',
+  name: 'home',
   component: Home
 },
 {
@@ -49,11 +48,6 @@ const routes = [{
   name: 'prod',
   component: Production
 },
-{
-  path: '/newSite',
-  name: 'newSite',
-  component: NewSite
-},
 {   
   path: '*', 
   redirect: { name: 'home' } 
@@ -61,7 +55,10 @@ const routes = [{
 
 const router = new VueRouter({
   mode: 'history',
-  routes
+  routes,
+  // scrollBehavior (to, from, savedPosition) {
+  //   return { x: 0, y: 0 }
+  // }
 });
 
 export default router

@@ -11,11 +11,16 @@
 					<p tag-refName="p_text" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.p_text"></p>
 				</div>
 				<div class="img-div">
-					<span><img :src="'/'+propsData.img_src" alt=""></span>
-					<!--<div class="overlay">
-						<input type="file" id="upload" name="upload" @change="onFileChange" style="visibility: hidden; width: 1px; height: 1px" multiple/>
-						<a class="info" href="" onclick="document.getElementById('upload').click(); return false">Change Image</a>
-					</div>-->
+					<!--<span><img :src="'/'+propsData.img_src" alt=""></span>-->
+					<div class="uploadImage">
+						<div class="hovereffect">
+							<span><img :src="(uploadedImg ? uploadedImg : '/'+propsData.img_src)" alt=""></span>
+							<div class="overlay">
+								<input type="file" @change="onFileChange($event)" id="upload4" name="upload4"  style="visibility: hidden; width: 1px; height: 1px" multiple/>
+								<a class="info" href="" onclick="document.getElementById('upload4').click(); return false">Change Image</a>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

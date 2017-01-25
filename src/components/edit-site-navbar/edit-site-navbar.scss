@@ -11,8 +11,8 @@ h1{
 
 nav {
   background: #d6e7ef;
-  padding: 1.2em;
-  height: 80px;
+  padding: 0.8em;
+  height: 60px;
   // position: fixed;
   // top: 0;
   // left: 0;
@@ -29,4 +29,15 @@ ul {
   list-style:none;
 }
   
-  
+.saveBtn {
+  color: white !important;
+  background-color:#8fc38f;
+  border: 1px solid white;
+}
+
+.previewProdBtn {
+  color: white !important;
+  border: 1px solid white;
+  // font-size: 10px;
+  background-color: #74aed8;
+}

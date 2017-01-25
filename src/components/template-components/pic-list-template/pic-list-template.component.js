@@ -12,21 +12,28 @@ export default {
     }
   },
   methods: {
-    onFileChange(e) {
+    onFileChange(e,num) {
       console.log('onFileChange')
+      console.log('num',num);
       var files = e.target.files || e.dataTransfer.files;
       console.log(files);
       if (!files.length)
         return;
-      this.createImage(files[0]);
+      this.createImage(files[0],num);
     },
-    createImage(file) {
+    createImage(file,num) {
       //var image = new Image();
       var reader = new FileReader();
 
       reader.onload = (e) => {
-        this.uploadedImg1 = e.target.result;
-        this.sendToServer(this.uploadedImg1);
+        if(num===1) {
+          this.uploadedImg1 = e.target.result;
+          // this.sendToServer(this.uploadedImg1);
+        } else if(num===2) {
+          this.uploadedImg2 = e.target.result;
+        } else if(num===3) {
+          this.uploadedImg3 = e.target.result;
+        }
       };
       reader.readAsDataURL(file);
 

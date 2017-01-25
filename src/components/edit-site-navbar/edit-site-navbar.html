@@ -1,19 +1,16 @@
 <nav class="nav">
   <div class="flex space-between">
     <div class="nav-left">
-      <a class="nav-item is-brand" href="#">
-        <h1>Edit Site</h1>
-      </a>
     </div>
 
     <div class="nav-center">
+      <router-link class="previewProdBtn small btn btn-info" :to="{name: 'prod',params: {id: getCurrSiteId}}">View on production</router-link>
+      <router-link class="previewProdBtn small btn btn-info" :to="{name: 'preview',params: {id: getCurrSiteId}}">Preview Site</router-link>
+      <button class="saveBtn small btn btn-success" @click="saveSite">Save</button>
     </div>
 
     <div class="nav-right">
-      <router-link class="small btn btn-info" :to="{name: 'prod',params: {id: getCurrSiteId}}">View on production</router-link>
-      <router-link class="small btn btn-info" :to="{name: 'preview',params: {id: getCurrSiteId}}">Preview Site</router-link>
       
-      <button class="small btn btn-success" @click="saveSite">Save</button>
     </div>
   </div>
 </nav>

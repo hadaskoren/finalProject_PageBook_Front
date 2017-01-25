@@ -13,8 +13,10 @@
 					</ul>
 				</div>
 				<div class="6u 6u$(medium)">
+						<!--<medium-editor :text='propsData.h2' custom-tag='h2' v-on:edit='applyTextEdit'></medium-editor>-->
 					<header class="major">
 						<h2 tag-refName="h2_text_1" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.h2_text_1"></h2>
+
 						<br>
 						<h2 tag-refName="h2_text_2" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.h2_text_2"></h2>
 					</header>

@@ -1,21 +1,32 @@
 .login{
-
-    // width: 300px;
-    // margin: 20px auto;
+    
+    color: white;
     input {
         width: 300px;
         margin-bottom: 20px;
+        background: #cce1f1;
+        border-radius: 6px;
+        color: black;
     }
     text-align: center;
 
     .signup-suggest {
         margin-top: 30px
-
-        
     }
 
     .para {
+        color: white;
         margin: 5px 0;
+    }
+
+    .header {
+        float: left;
+        margin-left: 2em;
+        margin-top: 2em;
+        
+        // h1 {
+        //     color: #cce1f1 !important;
+        //  }
     }
 }
 
@@ -27,12 +38,21 @@
 }
 
 h1{
-  background: url(http://apod.nasa.gov/apod/image/0603/coma_misti.jpg) -80px -80px;
-  color: red;
+  background: #cce1f1;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   font-weight: bold;
   font-size: 30px;
+  font-family: arial, helvetica;
+  text-align: center; 
+}
+
+h2{
+  background: white;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: bold;
+  font-size: 25px;
   font-family: arial, helvetica;
   text-align: center; 
 }
@@ -42,11 +62,35 @@ li{
 }
 
 .signup {
-    color: #458fef;
+    // color: white;
+    font-weight: bold;
 }
 
-.header {
-    float: left;
-    margin-left: 2em;
-    margin-top: 2em;
+
+
+.login-logout {
+    width: 400px;
+    height: 350px;
+    border-radius: 6px;
+    background-color: white;
+    input {
+        margin: 0;
+    }
+}
+
+button {
+    color: white;
+}
+
+// .loginBtn {
+//     color: black !important;
+//     background-color: white;
+//     font-size: 10px;
+// }
+
+.loginBtn {
+  color: white !important;
+  border: 1px solid white;;
+  font-size: 10px;
+  background-color: #74aed8;
 }

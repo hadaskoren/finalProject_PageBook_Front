@@ -9,11 +9,19 @@
 			<ul class="actions">
 				<li><a href="#one" class="button scrolly">{{propsData.li_a_text}}</a></li>
 			</ul>-->
-
+			<div class="flex">
+				<div>
+					<toolboxEditor v-if="showToolbox"></toolboxEditor>
+				</div>
+				<div>
+					<i v-if="showToolbox" class="delete fa fa-times" aria-hidden="true" @click="showToolbox = false"></i>
+				</div>
+			</div>
 			<span class="icon major fa-cloud"></span>
-			<h1 tag-refName="h1" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.h1"></h1>
+			<h1 tag-refName="h1" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event),showToolbox = true" v-html="propsData.h1"></h1>
 			<h2 tag-refName="h2" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.h2"></h2>
 			<p tag-refName="h3" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.p"></p>
+			<!--<medium-editor :text='propsData.h1' custom-tag='h1' v-on:edit='applyTextEdit'></medium-editor>-->
 			<ul class="actions">
 				<li><a href="#one" class="button scrolly" tag-refName="a" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)" v-html="propsData.a"></a></li>
 			</ul>

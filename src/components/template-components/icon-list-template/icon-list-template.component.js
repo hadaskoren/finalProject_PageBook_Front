@@ -1,9 +1,11 @@
 import { mapGetters } from 'vuex'
+import mediumEditor from 'medium-editor';
 
 export default  {
   props: ['propsData', 'compIndex'],
   data: () => {
     return {
+      text: ''
     }
   },
   methods : {
@@ -16,9 +18,13 @@ export default  {
           refName
       }
       this.$store.dispatch('saveCompProp', compData);
+    },
+    applyTextEdit(currText) {
+      this.text = currText
     }
   },
   components: {
+    'medium-editor': mediumEditor
   },
   computed: {
     ...mapGetters([
