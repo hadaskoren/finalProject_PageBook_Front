@@ -4,3 +4,4 @@ export const DELETE_COMP = 'DELETE_COMP';
 export const SAVE_PROP_TEXT = 'SAVE_PROP_TEXT';
 export const EDITABLE_FALSE = 'EDITABLE_FALSE';
 export const MAKE_EDITABLE = 'MAKE_EDITABLE';
+export const INCREASE_FONT_SIZE = 'INCREASE_FONT_SIZE';

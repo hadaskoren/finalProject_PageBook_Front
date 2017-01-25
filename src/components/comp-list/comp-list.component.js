@@ -5,12 +5,14 @@ import IconListTemplate from '../template-components/icon-list-template';
 import PicListTemplate from '../template-components/pic-list-template';
 import CompModal from '../comp-modal';
 import { Interfaces } from '../../interfaces/interfaces';
+
 // import * as _ from './dragdrop';
 
 
 export default {
   data: () => {
     return {
+      
       addCompFirstBtn: false,
       selectedComp: {
         selected: 'choose comp',
@@ -118,6 +120,7 @@ export default {
     IconListTemplate,
     PicListTemplate,
     CompModal,
+    
   },
   created() {
     this.updateCompsOptions();

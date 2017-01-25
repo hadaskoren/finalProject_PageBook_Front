@@ -4,9 +4,11 @@ import editSiteNavbar from '../edit-site-navbar';
 import newSiteNavbar from '../new-site-navbar';
 import mainNav from '../main-nav';
 
+
 export default  {
   data: () => {
     return {
+      
     }
   },
   methods : {
@@ -22,6 +24,7 @@ export default  {
     editSiteNavbar,
     newSiteNavbar,
     mainNav,
+    
   },
   computed: {
     ...mapGetters([

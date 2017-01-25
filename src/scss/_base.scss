@@ -28,11 +28,11 @@ body {
     height: 100%;
     &.user-dashboard {
       background: white;
-      background-image: url('./assets/img/bright-squares.png');
+      background-image: url('./assets/img/cubes.png');
     }
     &.login {
-      background: white;
-      background-image: url('./assets/img/gplay.png');
+      background: #598cb1;
+      background-image: url('./assets/img/cubes.png');
     }
 }
 
