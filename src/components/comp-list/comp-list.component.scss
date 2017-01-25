@@ -3,6 +3,7 @@
     width: 100%;
     margin: 0 auto;
     height: 500px;
+    position:relative;
 }
 
 p {
@@ -32,7 +33,7 @@ p {
 }
 
 .list-group-item {
-    border: 3px dashed orangered;
+    border: 3px dashed #598cb1;
     transition: all 0.5s;   
 }
 
@@ -57,3 +58,15 @@ p {
     background-color: red;
 }
 
+.addComp {
+  color: white !important;
+  border: 1px solid white;
+  // font-size: 10px;
+  background-color: #74aed8;
+}
+
+.addFinalComp {
+    color: white !important;
+    background-color:#8fc38f;
+    border: 1px solid white;
+}

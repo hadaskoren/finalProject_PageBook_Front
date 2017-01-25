@@ -1,43 +1,37 @@
 <div  class="comp-list-drag">
   <section class="comp-list">
+   
     <div class="firstAddBtn actionBtns flex">
-      <button type="button" class="small btn btn-info fa fa-plus" @click="showCompBtnsForFirstBtn()">Add Component</button>
+      <button type="button" class="addComp small btn btn-info fa fa-plus" @click="showCompBtnsForFirstBtn()">Add Component</button>
       <select v-if="addCompFirstBtn" class="chooseComp" v-model="selectedComp.comp">
           <option v-for="option in options" :value="option.value">
             {{ option.text }}
           </option>
         </select>
-      <button v-if="addCompFirstBtn" class="small btn btn-success" @click="addorDeleteComp('addComp',selectedComp,compIdx)">add</button>
+      <button v-if="addCompFirstBtn" class="addFinalComp small btn btn-success" @click="addorDeleteComp('addComp',selectedComp,compIdx)">add</button>
     </div>
 
-    <!--<ul>
-      <li v-for="num in nums" v-dragging="{ item: num, list: nums, group: 'num' }" >{{ num }} </li>
-    </ul>-->
-    <!--<div @dragover.prevent @drop="drop">-->
-    <!--<ul>
-        <li v-for="comp in getComps"> {{ comp.type }}</li>
-      </ul>-->
-      <section v-for="(comp, compIdx) in getComps" draggable="true" @drag.prevent="drag($event, compIdx)" @dragover.prevent="dragover($event, compIdx) "
-        @dragend="dragend($event, compIdx)" @dragstart="dragstart($event, compIdx)" @drop="drop($event, compIdx)" 
-        class="list-group " :class="{'list-group-small': isDragged, 'drag-over': currDraggedOverIndex === compIdx}"
-        @dragenter="dragenter($event, compIdx)">
-        <div :id="`${comp.type}-${compIdx}`">
-          <button class="deleteComp flex small btn btn-danger" @click="addorDeleteComp('deleteComp',selectedComp,compIdx)">X</button>
+    <section v-for="(comp, compIdx) in getComps" draggable="true" @drag.prevent="drag($event, compIdx)" @dragover.prevent="dragover($event, compIdx) "
+      @dragend="dragend($event, compIdx)" @dragstart="dragstart($event, compIdx)" @drop="drop($event, compIdx)" 
+      class="list-group " :class="{'list-group-small': isDragged, 'drag-over': currDraggedOverIndex === compIdx}"
+      @dragenter="dragenter($event, compIdx)">
+      <div :id="`${comp.type}-${compIdx}`">
+        <button class="deleteComp flex small btn btn-danger" @click="addorDeleteComp('deleteComp',selectedComp,compIdx)">X</button>
 
-          <component :is="comp.type" :propsData="comp.props" :compIndex="compIdx" :id="comp.type" class="list-group-item"></component>
-          <div class="actionBtns flex">
+        <component :is="comp.type" :propsData="comp.props" :compIndex="compIdx" :id="comp.type" class="list-group-item"></component>
+        <div class="actionBtns flex">
 
-            <button type="button" class="small btn btn-info fa fa-plus" data-toggle="modal" data-target="#exampleModal" @click="showCompBtns(compIdx)">Add Component</button>
-            <select v-if="comp.showAddCompButton" class="chooseComp" v-model="selectedComp.comp">
-          <option v-for="option in options" :value="option.value">
-            {{ option.text }}
-          </option>
-        </select>
-            <button v-if="comp.showAddCompButton" class="small btn btn-success" @click="addorDeleteComp('addComp',selectedComp,compIdx)">add</button>
-            <!--<button class="small btn btn-danger" @click="comp.showAddCompButton = false">cancel</button>-->
-          </div>
+          <button type="button" class="addComp small btn btn-info fa fa-plus" data-toggle="modal" data-target="#exampleModal" @click="showCompBtns(compIdx)">Add Component</button>
+          <select v-if="comp.showAddCompButton" class="chooseComp" v-model="selectedComp.comp">
+        <option v-for="option in options" :value="option.value">
+          {{ option.text }}
+        </option>
+      </select>
+          <button v-if="comp.showAddCompButton" class="addFinalComp small btn btn-success" @click="addorDeleteComp('addComp',selectedComp,compIdx)">add</button>
+          <!--<button class="small btn btn-danger" @click="comp.showAddCompButton = false">cancel</button>-->
         </div>
-      </section>
+      </div>
+    </section>
     <!--</div>-->
 
 

@@ -7,35 +7,53 @@
             <i class="delete fa fa-times" aria-hidden="true" @click="deleteSite(site)"></i>
             <hr> 
             <h2 ref="siteName" :contenteditable="`${getIsEditable}`" @keyup="saveCompProp($event)">{{site.siteName}}</h2>
-            <router-link class="small btn btn-info" :to="{name: 'editor',params: {id: site._id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>edit</router-link>
+            <router-link class="editSite small btn btn-info" :to="{name: 'editor',params: {id: site._id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>edit</router-link>
             <!--<button class="small btn btn-danger" @click="deleteSite(site)">Delete</button>-->
         </li>
         <div class="create-new-site">
             <div>
-            <h2>Add Site</h2>
-            <!--<router-link :to="{name: 'newSite'}"><i class="fa fa-plus-circle" aria-hidden="true" data-toggle="modal" data-target="#exampleModal"></i></router-link>-->
-            <i class="fa fa-plus-circle" aria-hidden="true" data-toggle="modal" data-target="#exampleModal"></i>
+              <h2>Add Site</h2>
+            <i class="addSite fa fa-plus-circle" aria-hidden="true" @click="modalIsOpen=true"></i>
             </div>
         </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       TEST
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
     </ul>
+
+    <modal v-show="modalIsOpen" effect="fade">
+      <transition name="modal">
+        <div class="modal-mask">
+          <div class="modal-wrapper">
+            <div class="modal-container">
+              <div class="modal-header">
+                <slot name="header">
+                  <h3>ADD SITE</h3>
+                </slot>
+              </div>
+              <div class="modal-body">
+                <slot name="body">
+                  <div class="flex space-between column-direction">
+                    <div>
+                      <input type="text" class="siteNameInput" v-model="siteName" placeholder="Enter site name">
+                    </div>
+                    <div>
+                      <input type="text" v-model="siteUrl" placeholder="Enter URL">
+                    </div>
+                  </div>
+                </slot>
+              </div>
+              <footer slot="modal-footer">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <button class="btn-block btn btn-default" @click="modalIsOpen = false">Cancel</button>
+                  </div>
+                  <div class="col-xs-6">
+                    <button class="btn-block btn btn-info " @click="newSite">Add</button>
+                  </div>
+                </div>
+              </footer>
+            </div>
+          </div>
+        </div>
+      </transition>
+    </modal>
 </section>

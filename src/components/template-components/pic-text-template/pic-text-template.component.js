@@ -4,13 +4,30 @@ export default  {
   props: ['propsData', 'compIndex'],
   data: () => {
     return {
-      // h2_text_1: 'Lorem ipsum dolor adipiscing',
-      // h2_text_2: 'amet dolor consequat',
-      // p_text: 'Adipiscing a commodo ante nunc accumsan et interdum mi ante adipiscing. A nunc lobortis non nisl amet vis sed volutpat aclacus nascetur ac non. Lorem curae et ante amet sapien sed tempus adipiscing id accumsan.',
-      // img_src: 'static/pic01.jpg'
+      uploadedImg: ''
   }
   },
   methods : {
+      onFileChange(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      console.log(files);
+      if (!files.length)
+        return;
+      this.createImage(files[0]);
+    },
+    createImage(file) {
+      //var image = new Image();
+      var reader = new FileReader();
+
+      reader.onload = (e) => {
+          this.uploadedImg = e.target.result;
+          // this.sendToServer(this.uploadedImg1);
+       
+      };
+      reader.readAsDataURL(file);
+
+      
+    },
     saveCompProp(event) {
       let htmlText = event.srcElement.innerHTML;
       let refName = event.srcElement.getAttribute('tag-refname')

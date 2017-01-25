@@ -11,11 +11,15 @@
 
     <div class="nav-center">
       <ul class="flex" >
-        <li v-for="(comp,index) in getComps"><a :href="`#${comp.type}-${index}`">{{comp.type}}</a></li>
-        
+          <li v-for="(comp,index) in getComps">
+            <transition name="fade-down" mode="out-in" appear>
+              <a :href="`#${comp.type}-${index}`" class="fade-down-enter-active">{{comp.type}} 
+                <slot class="line" v-if="index !== getComps.length-1">  
+                </slot>
+              </a>
+            </transition>
+          </li>
       </ul>
     </div>
-
-
   </div>
 </nav>

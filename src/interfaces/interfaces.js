@@ -13,6 +13,13 @@ export const Interfaces = {
             // p_text_2: 'lobortis feugiat sapien sed etiam volutpat accumsan.',
             // li_a_text: 'Discover'
             h1: 'HTML5 UP',
+            // h1: {
+            //     text: 'HTML5 UP',
+            //     style: {
+            //         size: '1'
+
+            //     }
+            // },
             h2: 'Accumsan feugiat mi commodo e',
             p: 'lobortis feugiat sapie',
             a: 'Discover'

@@ -6,9 +6,11 @@ import mainNav from '../main-nav';
 import router from '../../routes';
 
 
+
 export default  {
   data: () => {
     return {
+      
     }
   },
   methods : {
@@ -24,6 +26,7 @@ export default  {
     editSiteNavbar,
     newSiteNavbar,
     mainNav,
+    
   },
   computed: {
     ...mapGetters([

@@ -11,7 +11,9 @@ const state = {
     isPublished: false,
     isEditable: false,
     comps: [],
-    flag: true
+    flag: true,
+    currCompIndex: '',
+    currPropName: ''
 };
 
 const mutations = {
@@ -48,13 +50,20 @@ const mutations = {
         state.comps.splice(compIdx, 1);
     },
     [types.SAVE_PROP_TEXT](state, compData) {
-        state.comps[compData.compIndex].props[compData.refName] = compData.htmlText;
+        state.currCompIndex = compData.compIndex;
+        state.currPropName = compData.refName;
+        state.comps[state.currCompIndex].props[state.currPropName] = compData.htmlText;
     },
     [types.EDITABLE_FALSE](state) {
         state.isEditable = false;
     },
     [types.MAKE_EDITABLE](state) {
         state.isEditable = true;
+    },
+    [types.INCREASE_FONT_SIZE](state) {
+        console.log('mutation increase');
+        // console.log('state.comps[state.currCompIndex].props[state.currPropName][style]',state.comps[state.currCompIndex].props[state.currPropName][style]);
+        // state.comps[state.currCompIndex].props[state.currPropName][style].size += 5;  
     }
 }
 
@@ -124,6 +133,10 @@ const actions = {
                 context.commit('addSiteIdToCurrUser', json._id);
                 router.push(`/editor/site/${json._id}`);
             });  
+    },
+    increaseFontSize(context) {
+        console.log('action increase');
+        context.commit(types.INCREASE_FONT_SIZE);
     }
 };
 
