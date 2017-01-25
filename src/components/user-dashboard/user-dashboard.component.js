@@ -50,9 +50,10 @@ export default {
     mainNav
   },
   created() {
-    // if (!this.$store.state.user.isLoggedIn) {
-    //   router.push(`/home`);
-    // }
+    // debugger;
+    if (!this.$store.state.user.isLoggedIn) {
+      router.push(`/home`);
+    }
     const sitesIds = JSON.stringify(this.$store.state.user.siteIDs);
     this.$store.dispatch('getSitesList');
   },

@@ -16,9 +16,11 @@ const mutations = {
     state.siteIDs.push(id);
   },
   updateCurrUser(state, user) {
+   
     state.id = user._id;
     state.username = user.username;
     state.siteIDs = user.siteIds;
+    state.sitesList = [];
     state.isLoggedIn = true;
     localStorage.setItem('loginToken', JSON.stringify(user.token));
     toastr.options.timeOut = 1200;
@@ -62,7 +64,11 @@ const actions = {
       });
   },
   getSitesList(context) {
-    if(!context.state.siteIDs.length) return;
+    // debugger;
+    if(!context.state.siteIDs.length) {
+      // context.state.sitesList = []; 
+      return;
+    }
     Vue.http.post(`data/sites/list`, context.state.siteIDs)
       .then(res => res.json())
       .then(json => context.commit('updateSitesList', json))
@@ -90,9 +96,11 @@ const actions = {
     Vue.http.post('signup', user)
       .then(res => res.json())
       .then(json => {
-        toastr.options.timeOut = 1200;
-        toastr.success('Welcome to Book Page')
-        router.push('/home')
+        console.log('signupUser resolve', json)
+        // toastr.options.timeOut = 1200;
+        // toastr.success('Welcome to Book Page')
+        context.dispatch('getUser', json)
+        // router.push('/home')
       });
   },
   saveNewUser(context, userData) {
