@@ -1,6 +1,7 @@
 
 <section class="user-dashboard">
     <main-nav></main-nav>
+
     <ul class="sites-list">
         <li v-if="getSitesList !== undefined" v-for="site in getSitesList">
             <i class="delete fa fa-times" aria-hidden="true" @click="deleteSite(site)"></i>

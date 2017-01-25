@@ -15,6 +15,9 @@ const app = new Vue({
   router,
   store,
   components: {
+  },
+  created() {
+    this.$store.dispatch('checkIfLoggedWithToken');
   }
 }).$mount('#app');
 

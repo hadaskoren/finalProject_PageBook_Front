@@ -12,10 +12,10 @@
     <div class="nav-center">
       <div class="nav-center-list-items">
         <ul class="clean-list flex">
-          <li class="list-item">
+          <!--<li class="list-item" v-if="!isLoggedIn">
             <router-link to="/home">Home</router-link>
-          </li>
-          <li class="list-item">
+          </li>-->
+          <li class="list-item" v-if="isLoggedIn">
             <router-link to="/user-dashboard/getCurrUserID">My Sites</router-link>
           </li>
         </ul>
